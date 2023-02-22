@@ -14,7 +14,7 @@ function User() {
   useEffect(() => {
     async function getProfile() {
       try {
-        const url = 'http://52.86.121.123:3000/profile';
+        const url = 'http://52.201.221.102:3000/profile';
         const token = localStorage.getItem('token');
         const response = await axios.get(url, {
           headers: {

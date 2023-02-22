@@ -96,8 +96,28 @@ body {
   background-repeat: no-repeat;
   background-size: 100%;
   background-image: url('https://cdn.discordapp.com/attachments/1077978423147897003/1078006220155260970/inventory.png');
+  animation: updown 05s infinite;
 }
+@keyframes updown {
+  0% {
+    transform:  translateY(10px);
 
+  }
+
+
+
+  50% {
+    transform: translateY(0px);
+
+  }
+
+
+
+  100% {
+    transform:  translateY(10px);
+
+  }
+}
 .Inv {
   width: 100%;
 
@@ -247,6 +267,7 @@ body {
 #root {
   max-width: 425px;
   display: flex;
+  overflow: hidden;
   align-items: center;
   justify-content: center;
 }
@@ -407,6 +428,7 @@ button:hover {
 nav svg {
   width: 30px;
   margin: 20px;
+  filter: drop-shadow(0px 0px 10px rgb(0, 0, 0));
 }
 
 .MonstersApp span {
@@ -629,6 +651,7 @@ nav svg {
   align-items: center;
   justify-content: center;
   border-radius: 10px;
+  filter: drop-shadow(0px 0px 10px rgb(0, 0, 0));
 }
 
 .Login:hover {
@@ -791,8 +814,8 @@ select {
   border-right: 2px solid #eed895;
   color: #eed895;
   background:
-    radial-gradient(black 3px, transparent 4px),
-    radial-gradient(black 3px, transparent 4px),
+    radial-gradient(#7e6c38 3px, transparent 4px),
+    radial-gradient(#7e6c38 3px, transparent 4px),
     linear-gradient(#070711 4px, transparent 0),
     linear-gradient(45deg, transparent 74px, transparent 75px, #7e6c38 75px, #7e6c38 76px, transparent 77px, transparent 109px),
     linear-gradient(-45deg, transparent 75px, transparent 76px, #7e6c38 76px, #7e6c38 77px, transparent 78px, transparent 109px),

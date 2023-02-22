@@ -18,7 +18,7 @@ class Friends extends Component {
   }
 
   componentDidMount() {
-    axios.get('http://52.86.121.123:3000/tavern')
+    axios.get('http://52.201.221.102:3000/tavern')
       .then(response => {
         this.setState({ tavernData: response.data });
       })

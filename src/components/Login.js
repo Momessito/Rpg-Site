@@ -19,7 +19,7 @@ class LoginForm extends React.Component {
   handleSubmit = (event) => {
     event.preventDefault();
 
-    const url = 'https://52.86.121.123:3000/login';
+    const url = 'http://52.86.121.123:3000/login';
     const username = document.querySelector('.username-input').value;
     const password = document.querySelector('.password-input').value;
 
