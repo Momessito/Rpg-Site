@@ -24,9 +24,11 @@ function Home() {
       istrue = false;
       new Audio(sound).play();
       document.querySelector(".Map").style.transform =
-        "scale(4.2) rotate(200deg)";
-      document.querySelector(".Mapa").style.animation = "apear 1.5s linear";
-      document.querySelector(".Mapa").style.opacity = "1";
+        "scale(1.2) rotate(150deg)";
+      document.querySelector(".Map").style.opacity =
+        "0";
+      document.querySelector(".FronteiraUnida").style.opacity =
+        "1";
       document.querySelector(".light").style.display = "none";
       document.querySelector(".light2").style.display = "none";
       document.querySelector(".Start").innerHTML = "Voltar";
@@ -37,33 +39,19 @@ function Home() {
         "Explore o Mundo de magia";
       document.querySelector(".FronteiraUnidaShop").style.zindex = "-200";
     } else {
+
+      document.querySelector(".Map").style.opacity =
+      "1";
       istrue = true;
-      document.querySelector(".Mapa").style.animation = "disapear 1.5s linear";
+      document.querySelector(".FronteiraUnida").style.opacity =
+      "0";
       document.querySelector(".Map").style.transform = "scale(1) rotate(0deg)";
-      document.querySelector(".Mapa").style.opacity = "0";
-      document.querySelector(".Mapa").style.display = "none";
       document.querySelector(".light").style.display = "block";
       document.querySelector(".light2").style.display = "block";
       document.querySelector(".Start").innerHTML = "Começar";
-      document.querySelector(".FronteiraUnidaShop").style.zindex = "-101";
       document.querySelector(".Map").style.transform = "scale(1) rotate(0deg)";
       new Audio(sound).play();
     }
-  }
-
-  function FronteiraUnida() {
-    istrue = true;
-    document.querySelector(".Mapa").style.animation = "disapear 1.5s linear";
-    document.querySelector(".Map").style.transform = "scale(0) rotate(0deg)";
-    document.querySelector(".Mapa").style.display = "none";
-    document.querySelector(".FronteiraUnida").style.opacity = "1";
-    document.querySelector(".title").innerHTML = "Fronteira Unida";
-    document.querySelector(".subtitle").innerHTML = "O inicio";
-
-    document.querySelector(".Mapa").style.opacity = "0";
-    document.querySelector(".FronteiraUnidaShop").style.zIndex = "100";
-    document.querySelector(".Start").innerHTML = "Começar";
-    new Audio(sound).play();
   }
 
   function Shope() {
@@ -99,20 +87,13 @@ function Home() {
           Começar
         </button>
 
-        <div className="Mapa" onClick={FronteiraUnida}>
-          <img src={compass} />
-          Fronteira Unida
-        </div>
+
         <img src={Map} className="Map" />
 
         <img
           className="FronteiraUnida"
-          src="https://cdn.discordapp.com/attachments/946523460060975157/1077317130363621478/NTC_KINGEz_village_people_town__fantasy__anime__RPG_d520750f-ebb9-4500-adc4-00829d688402.png"
+          src="https://cdn.discordapp.com/attachments/1077978423147897003/1078225253723013140/map.jpg"
         />
-        <div onClick={Shope} className="FronteiraUnidaShop">
-          {" "}
-          Loja{" "}
-        </div>
       </main>
       <audio src={sound} />
       <div className="light"></div>
