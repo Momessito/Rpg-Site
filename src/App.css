@@ -444,12 +444,20 @@ nav svg {
 }
 
 .FronteiraUnida {
-  width: 160%;
+  width: 100%;
   position: absolute;
   z-index: -101;
   opacity: 0;
   transition: 1.5s all linear;
 }
+.canvas4 h1{
+  width: 100%;
+  text-align: center;
+}
+.canvas4 p{
+  margin: 10px;
+}
+
 
 .FronteiraUnidaShop {
   z-index: -200;

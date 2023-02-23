@@ -24,11 +24,11 @@ function Home() {
       istrue = false;
       new Audio(sound).play();
       document.querySelector(".Map").style.transform =
-        "scale(1.2) rotate(150deg)";
+        "scale(4.2) rotate(200deg)";
       document.querySelector(".Map").style.opacity =
-        "0";
-      document.querySelector(".FronteiraUnida").style.opacity =
         "1";
+      document.querySelector(".Mapa").style.animation = "apear 1.5s linear";
+      document.querySelector(".Mapa").style.opacity = "1";
       document.querySelector(".light").style.display = "none";
       document.querySelector(".light2").style.display = "none";
       document.querySelector(".Start").innerHTML = "Voltar";
@@ -39,19 +39,37 @@ function Home() {
         "Explore o Mundo de magia";
       document.querySelector(".FronteiraUnidaShop").style.zindex = "-200";
     } else {
-
+      istrue = true;
       document.querySelector(".Map").style.opacity =
       "1";
-      istrue = true;
-      document.querySelector(".FronteiraUnida").style.opacity =
-      "0";
+      document.querySelector(".Mapa").style.animation = "disapear 1.5s linear";
       document.querySelector(".Map").style.transform = "scale(1) rotate(0deg)";
+      document.querySelector(".Mapa").style.opacity = "0";
+      document.querySelector(".Mapa").style.display = "none";
       document.querySelector(".light").style.display = "block";
       document.querySelector(".light2").style.display = "block";
       document.querySelector(".Start").innerHTML = "Começar";
+      document.querySelector(".FronteiraUnidaShop").style.zindex = "-101";
       document.querySelector(".Map").style.transform = "scale(1) rotate(0deg)";
       new Audio(sound).play();
     }
+  }
+
+  function FronteiraUnida() {
+    istrue = true;
+    document.querySelector(".Map").style.opacity =
+    "0";
+    document.querySelector(".Mapa").style.animation = "disapear 1.5s linear";
+    document.querySelector(".Map").style.transform = "scale(0) rotate(0deg)";
+    document.querySelector(".Mapa").style.display = "none";
+    document.querySelector(".FronteiraUnida").style.opacity = "1";
+    document.querySelector(".title").innerHTML = "Fronteira Unida";
+    document.querySelector(".subtitle").innerHTML = "O inicio";
+
+    document.querySelector(".Mapa").style.opacity = "0";
+    document.querySelector(".FronteiraUnidaShop").style.zIndex = "100";
+    document.querySelector(".Start").innerHTML = "Começar";
+    new Audio(sound).play();
   }
 
   function Shope() {
@@ -87,13 +105,20 @@ function Home() {
           Começar
         </button>
 
-
+        <div className="Mapa" onClick={FronteiraUnida}>
+          <img src={compass} />
+          Fronteira Unida
+        </div>
         <img src={Map} className="Map" />
 
         <img
           className="FronteiraUnida"
-          src="https://cdn.discordapp.com/attachments/1077978423147897003/1078225253723013140/map.jpg"
+          src="https://cdn.discordapp.com/attachments/946523460060975157/1077317130363621478/NTC_KINGEz_village_people_town__fantasy__anime__RPG_d520750f-ebb9-4500-adc4-00829d688402.png"
         />
+        <div onClick={Shope} className="FronteiraUnidaShop">
+          {" "}
+          Loja{" "}
+        </div>
       </main>
       <audio src={sound} />
       <div className="light"></div>
@@ -230,6 +255,23 @@ function Home() {
         </p>
         <Carrosel></Carrosel>
       </div>
+      <hr></hr>
+      <div className="canvas4">
+        <h1>Mapa</h1>
+        <img src="https://cdn.discordapp.com/attachments/1077978423147897003/1078225253723013140/map.jpg"/>
+        <p>
+        Bem-vindo ao mundo de Jigen, um lugar repleto de aventuras e desafios emocionantes! Este é um mundo vasto e diversificado, com paisagens que variam desde as montanhas nevadas até as florestas tropicais exuberantes, passando por desertos escaldantes e vastos oceanos que abrigam criaturas misteriosas.
+          <br /><br /><br />
+          Jigen é habitado por diversas raças, como humanos, elfos, anões e muitas outras criaturas fantásticas. Cada raça possui sua própria cultura e história, o que faz do mundo de Jigen um lugar rico e interessante para explorar.
+          <br /><br /><br />
+          No mundo de Jigen, há inúmeras cidades e vilarejos espalhados por todo o continente, cada um com suas próprias peculiaridades e mistérios a serem desvendados. Em cada lugar, você encontrará pessoas dispostas a lhe dar missões e desafios para completar, oferecendo recompensas valiosas em troca.
+          <br /><br /><br />
+          Para navegar pelo mundo de Jigen, os jogadores podem viajar a pé, de cavalo, de barco e até mesmo por teletransporte em determinados pontos. Além disso, existem diversos meios de transporte mágicos que permitem que você viaje rapidamente pelo mundo.
+          <br /><br /><br />
+          Jigen é um mundo vasto e complexo, cheio de possibilidades e aventuras emocionantes. Prepare-se para enfrentar desafios incríveis e descobrir segredos surpreendentes enquanto explora este mundo fantástico e mágico!
+        </p>
+
+        </div>
       <hr></hr>
       <div className="canvas3">
         <h1>
