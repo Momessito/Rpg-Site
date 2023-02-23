@@ -14,6 +14,7 @@ import sound from "./zoom.mp3";
 import Nav from "./components/nav";
 import compass from "./compass.png";
 import Login from "./components/Login";
+import { useEffect } from "react";
 
 
 
@@ -75,6 +76,22 @@ function Home() {
   function Shope() {
     window.location.href = "/shop";
   }
+
+  function Senha() {
+    var senha = prompt('Digite a senha')
+
+    if(senha = 'Macacos'){
+      document.querySelector('.OnlyCell').style.display = 'none'
+    }else{
+      document.querySelector('.OnlyCell').style.display = 'flex'
+      document.querySelector('.OnlyCell').style.innerHTML = 'Senha Errada'
+
+    }
+  }
+  useEffect(() => {
+    Senha()
+  });
+
   return (
     <div className="App">
       <div className="OnlyCell">

@@ -65,7 +65,7 @@ body {
 .inv {
   margin: 20px 15px;
   width: 100%;
-  height: 67vh;
+  height: 64vh;
   border-radius: 10px;
   overflow: scroll;
   display: flex;
@@ -77,30 +77,8 @@ body {
   color: rgb(11, 172, 19) !important;
   font-size: small !important;
 }
-.item-inv:hover {
-  z-index: 1000;
-  transform: scale(1.3);
-}
 
-.item-inv {
-  width: calc(30% - 8px);
-  height: 30vh;
-  margin: 1.6%;
-  box-shadow: 0px 0px 10px #070711;
-  background-color: #170400;
-  border: 4px solid #e5be63;
-  border-radius: 10px;
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  margin-top: 4.6%;
-  transition: 0.3s all linear;
-}
 
-.item-desc {
-  transform: translateY(-30px);
-  overflow: scroll;
-  font-size: small !important;
-}
 
 .inventory {
   transform: translateY(60px);
@@ -145,23 +123,21 @@ body {
 
 .item-inv span {
   font-size: large;
-  transform: translate(0px, -150px);
+  transform: translate(0px, -305px);
   background-color: rgb(172, 11, 11);
   border: 2px solid white;
   color: white;
-  padding: 0px 15px;
+  padding: 0px 30px;
   margin-left: 2px;
   border-radius: 20px;
 }
 
 .item-inv img {
-  height: 40%;
-  margin: 5px;
+  height: 80%;
   margin-bottom: 0;
   border-radius: 20px;
-  border: 5px solid #e5be63;
   background-color: #140501;
-  width: calc(100% - 20px);
+  width: calc(100%);
   position: relative;
 }
 
@@ -182,7 +158,7 @@ body {
   margin: 0;
 }
 .item-text p {
-  font-size: medium;
+  font-size: x-large;
   color: white;
   height: 40px;
 }
@@ -450,14 +426,13 @@ nav svg {
   opacity: 0;
   transition: 1.5s all linear;
 }
-.canvas4 h1{
+.canvas4 h1 {
   width: 100%;
   text-align: center;
 }
-.canvas4 p{
+.canvas4 p {
   margin: 10px;
 }
-
 
 .FronteiraUnidaShop {
   z-index: -200;
@@ -836,7 +811,12 @@ select {
   flex-direction: column;
   transform: translateX(-500px);
 }
-
+.canvas4 img {
+  width: calc(100% - 84px) !important;
+  padding: 20px;
+  margin: 20px;
+  border: 2px solid #7e6c38;
+}
 .screen {
   background-color: rgba(11, 108, 172, 0.664);
   display: flex;
@@ -1371,7 +1351,7 @@ hr {
 
 @media screen and (max-width: 426px) {
   .OnlyCell {
-    visibility: hidden;
+    visibility: visible;
   }
 }
 
@@ -2047,4 +2027,38 @@ hr {
     width: 50%;
     margin: 10px auto;
   }
+}
+
+.item-inv {
+  width: calc(45%);
+  margin: 1%;
+  height: 30vh;
+  box-shadow: 0px 0px 5px #070711;
+  background-color: #170400;
+  border: 4px solid #e5be63;
+  border-radius: 10px;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  margin-top: 4.6%;
+  transition: 0.6s all linear;
+}
+
+.item-desc {
+  transform: translateY(-30px);
+  overflow: scroll;
+  display: none;
+  font-size: large !important;
+}
+
+.item-inv:active{
+  transform: rotateY(180deg);
+}
+.item-inv:active img{
+  display: none;
+}
+.item-inv:active .item-text{
+  display: none;
+}
+.item-inv:active .item-desc{
+  display: block;  transform: rotateY(180deg);
 }
