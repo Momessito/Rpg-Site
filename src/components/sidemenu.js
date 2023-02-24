@@ -12,6 +12,7 @@ function SideMenu() {
     <li><a href="/">Home</a></li>
     <li><a href="/user">Perfil</a></li>
     <li><a href="/inventory">Inventario</a></li>
+    <li><a href="/shop">Loja</a></li>
     <li><a href="/guild">Guild</a></li>
     <li><a href="/friends">Taberna</a></li>
     <li><a href="/monsters">Monstruario</a></li>

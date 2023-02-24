@@ -156,11 +156,14 @@ body {
   margin: 0;
 }
 .item-text p {
-  font-size: x-large;
+  font-size: medium;
+  margin-top: 5px;
   color: white;
   height: 40px;
 }
-
+.item-inv p{
+  font-size: medium !important;
+}
 .inventoryW {
   width: 100%;
   height: 100vh;
@@ -2075,4 +2078,29 @@ width: 50px;
   width: 100%;
   text-align: center;
   transform: translateY(-100px);
+}
+
+.Shop{
+  width: 100%;
+}
+.Shop img{
+  width: 100%;
+}
+.Shop ul{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  border-radius: 2px;
+}
+.Shop li{
+  margin: 0;
+  width: 45%;
+  padding: 5px;
+  background-color: #e5be63;
+  border-radius: 2px;
+  color: #070711;
+  margin: 5px;
 }

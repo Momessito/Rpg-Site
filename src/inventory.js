@@ -38,15 +38,12 @@ function Inv() {
           <div className="inv">
             {items.map((item) => (
               <div className="item-inv" key={item.id}>
-                <img src='https://cdn.discordapp.com/attachments/1078132949121245285/1078177367685611530/grid_0-1.webp' />
+                <img src={item.img} />
                 <div className="item-text">
                   <p>{item.name}</p>
-                  <span>{item.quantity}X</span>
                 </div>
                 <p className="item-desc">
                   {item.description}
-                  <br />
-                  <span>Efeito: {item.effect}</span>
                 </p>
               </div>
             ))}
