@@ -14,9 +14,6 @@ import sound from "./zoom.mp3";
 import Nav from "./components/nav";
 import compass from "./compass.png";
 import Login from "./components/Login";
-import { useEffect } from "react";
-
-
 
 function Home() {
   var istrue = true;
@@ -26,8 +23,7 @@ function Home() {
       new Audio(sound).play();
       document.querySelector(".Map").style.transform =
         "scale(4.2) rotate(200deg)";
-      document.querySelector(".Map").style.opacity =
-        "1";
+      document.querySelector(".Map").style.opacity = "1";
       document.querySelector(".Mapa").style.animation = "apear 1.5s linear";
       document.querySelector(".Mapa").style.opacity = "1";
       document.querySelector(".light").style.display = "none";
@@ -41,8 +37,7 @@ function Home() {
       document.querySelector(".FronteiraUnidaShop").style.zindex = "-200";
     } else {
       istrue = true;
-      document.querySelector(".Map").style.opacity =
-      "1";
+      document.querySelector(".Map").style.opacity = "1";
       document.querySelector(".Mapa").style.animation = "disapear 1.5s linear";
       document.querySelector(".Map").style.transform = "scale(1) rotate(0deg)";
       document.querySelector(".Mapa").style.opacity = "0";
@@ -58,8 +53,7 @@ function Home() {
 
   function FronteiraUnida() {
     istrue = true;
-    document.querySelector(".Map").style.opacity =
-    "0";
+    document.querySelector(".Map").style.opacity = "0";
     document.querySelector(".Mapa").style.animation = "disapear 1.5s linear";
     document.querySelector(".Map").style.transform = "scale(0) rotate(0deg)";
     document.querySelector(".Mapa").style.display = "none";
@@ -76,21 +70,6 @@ function Home() {
   function Shope() {
     window.location.href = "/shop";
   }
-
-  function Senha() {
-    var senha = prompt('Digite a senha')
-
-    if(senha = 'Macacos'){
-      document.querySelector('.OnlyCell').style.display = 'none'
-    }else{
-      document.querySelector('.OnlyCell').style.display = 'flex'
-      document.querySelector('.OnlyCell').style.innerHTML = 'Senha Errada'
-
-    }
-  }
-  useEffect(() => {
-    Senha()
-  });
 
   return (
     <div className="App">
@@ -275,20 +254,44 @@ function Home() {
       <hr></hr>
       <div className="canvas4">
         <h1>Mapa</h1>
-        <img src="https://cdn.discordapp.com/attachments/1077978423147897003/1078225253723013140/map.jpg"/>
+        <img src="https://cdn.discordapp.com/attachments/1077978423147897003/1078225253723013140/map.jpg" />
         <p>
-        Bem-vindo ao mundo de Jigen, um lugar repleto de aventuras e desafios emocionantes! Este é um mundo vasto e diversificado, com paisagens que variam desde as montanhas nevadas até as florestas tropicais exuberantes, passando por desertos escaldantes e vastos oceanos que abrigam criaturas misteriosas.
-          <br /><br /><br />
-          Jigen é habitado por diversas raças, como humanos, elfos, anões e muitas outras criaturas fantásticas. Cada raça possui sua própria cultura e história, o que faz do mundo de Jigen um lugar rico e interessante para explorar.
-          <br /><br /><br />
-          No mundo de Jigen, há inúmeras cidades e vilarejos espalhados por todo o continente, cada um com suas próprias peculiaridades e mistérios a serem desvendados. Em cada lugar, você encontrará pessoas dispostas a lhe dar missões e desafios para completar, oferecendo recompensas valiosas em troca.
-          <br /><br /><br />
-          Para navegar pelo mundo de Jigen, os jogadores podem viajar a pé, de cavalo, de barco e até mesmo por teletransporte em determinados pontos. Além disso, existem diversos meios de transporte mágicos que permitem que você viaje rapidamente pelo mundo.
-          <br /><br /><br />
-          Jigen é um mundo vasto e complexo, cheio de possibilidades e aventuras emocionantes. Prepare-se para enfrentar desafios incríveis e descobrir segredos surpreendentes enquanto explora este mundo fantástico e mágico!
+          Bem-vindo ao mundo de Jigen, um lugar repleto de aventuras e desafios
+          emocionantes! Este é um mundo vasto e diversificado, com paisagens que
+          variam desde as montanhas nevadas até as florestas tropicais
+          exuberantes, passando por desertos escaldantes e vastos oceanos que
+          abrigam criaturas misteriosas.
+          <br />
+          <br />
+          <br />
+          Jigen é habitado por diversas raças, como humanos, elfos, anões e
+          muitas outras criaturas fantásticas. Cada raça possui sua própria
+          cultura e história, o que faz do mundo de Jigen um lugar rico e
+          interessante para explorar.
+          <br />
+          <br />
+          <br />
+          No mundo de Jigen, há inúmeras cidades e vilarejos espalhados por todo
+          o continente, cada um com suas próprias peculiaridades e mistérios a
+          serem desvendados. Em cada lugar, você encontrará pessoas dispostas a
+          lhe dar missões e desafios para completar, oferecendo recompensas
+          valiosas em troca.
+          <br />
+          <br />
+          <br />
+          Para navegar pelo mundo de Jigen, os jogadores podem viajar a pé, de
+          cavalo, de barco e até mesmo por teletransporte em determinados
+          pontos. Além disso, existem diversos meios de transporte mágicos que
+          permitem que você viaje rapidamente pelo mundo.
+          <br />
+          <br />
+          <br />
+          Jigen é um mundo vasto e complexo, cheio de possibilidades e aventuras
+          emocionantes. Prepare-se para enfrentar desafios incríveis e descobrir
+          segredos surpreendentes enquanto explora este mundo fantástico e
+          mágico!
         </p>
-
-        </div>
+      </div>
       <hr></hr>
       <div className="canvas3">
         <h1>

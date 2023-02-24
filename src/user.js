@@ -31,6 +31,30 @@ function User() {
     getProfile();
   }, []);
 
+  const [moneyData, setMoneyData] = useState(null);
+
+useEffect(() => {
+  async function getMoneyProfile() {
+    try {
+      const url = "https://saintdev.link/profile/money/";
+      const token = localStorage.getItem("token");
+      const response = await axios.get(url, {
+        headers: {
+          "x-access-token": token,
+        },
+      });
+      console.log(response);
+      setMoneyData(response.data);
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  getMoneyProfile();
+}, []);
+
+
+
   return (
     <div className="UserApp">
       <SideMenu />
@@ -65,6 +89,15 @@ function User() {
               </svg>
             </div>
           </div>
+          <div className="money">
+          <img src="https://www.larpdistribution.com/wp-content/uploads/2020/05/MY100676-1.png"/>
+          <br />
+          {moneyData.gold} Moedas de Ouro,          <br />
+          {moneyData.silver}Moedas de prata,          <br />
+          {moneyData.bronze}Moedas de bronze
+
+          </div>
+          
           <div className="ProfileAdicional">
             <h2>Historia</h2>
             <p>{userData.biography}</p>
