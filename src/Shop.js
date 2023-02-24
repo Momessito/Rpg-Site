@@ -19,7 +19,7 @@ function Shop() {
       });
   }, []);
 
-  async function buyItem(itemId) {
+  async function buyItem(itemId,itemName) {
     try {
       const url = `https://saintdev.link/store/${itemId}/buy`;
       const token = localStorage.getItem("token");
@@ -28,9 +28,9 @@ function Shop() {
           "x-access-token": token,
         },
       });
-      alert(`Compra realizada com sucesso para o item ${itemId}!`);
+      alert(`Compra realizada com sucesso para o item ${itemName}!`);
     } catch (err) {
-      alert(`Ocorreu um erro ao comprar o item ${itemId}: ${err.message}`);
+      alert(`Ocorreu um erro ao comprar o item ${itemName}: ${err.message}`);
     }
   }
   return (
@@ -55,7 +55,7 @@ function Shop() {
               <img src={item.img}/>
               <h2>{item.name}</h2>
               <h5>{item.price} Moedas de bronze</h5>
-              <button onClick={() => buyItem(item.id)}>Comprar</button>
+              <button onClick={() => buyItem(item.id,item.name)}>Comprar</button>
             </li>
           ))}
         </ul>
