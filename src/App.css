@@ -131,9 +131,12 @@ body {
 }
 
 .item-inv img {
-  width: 70%;
-  border: 2px solid #B17C2A;
-  border-radius: 5px;
+  height: 60%;
+  margin-bottom: 0;
+  border-radius: 20px;
+  background-color: #140501;
+  width: calc(80%);
+  position: relative;
 }
 
 .inv {
@@ -159,9 +162,10 @@ body {
   height: 40px;
 }
 .item-inv p{
-  font-size: large !important;
+  font-size: small !important;
+  width: 80%;
+  overflow: hidden;
   color: #B17C2A;
-  margin: 20px;
 }
 .inventoryW {
   width: 100%;
@@ -2035,21 +2039,19 @@ hr {
 }
 
 .item-inv {
-  margin: 0;
-  color: #B17C2A;
+  width: calc(47%);
+  background-image: url('https://cdn.discordapp.com/attachments/1077978423147897003/1078832492070572052/card_brown.png');
+  margin: 1%;
+  height: 30vh;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
-  width: 100%;
-  height: 300px;
-  padding: 10px;
-  background-image: url('https://cdn.discordapp.com/attachments/1077978423147897003/1078824111758913668/shop.png');
+  justify-content: center;
+  box-shadow: 0px 0px 5px #070711;
+  border-radius: 10px;
   background-repeat: no-repeat;
-  background-size: 100%;
-  padding-bottom: 20px;
-  padding-top: 50px;
-  border-radius: 2px;
+  background-size: 100% 100%;
+  margin-top: 4.6%;
+  transition: 0.6s all linear;
 }
 
 .item-desc {
@@ -2071,8 +2073,6 @@ hr {
 .item-inv:active .item-desc {
   display: block;
   transform: rotateY(180deg);
-  font-size: medium !important;
-
 }
 
 .money img{
@@ -2110,7 +2110,7 @@ width: 50px;
   align-items: center;
   justify-content: flex-start;
   width: 100%;
-  height: 440px;
+  height: 520px;
   padding: 10px;
   background-image: url('https://cdn.discordapp.com/attachments/1077978423147897003/1078820399594348604/card.png');
   background-repeat: no-repeat;
