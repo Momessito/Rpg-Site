@@ -22,7 +22,7 @@ function User() {
             "x-access-token": token,
           },
         });
-        console.log(response);
+
         setUserData(response.data);
       } catch (err) {
         console.log(err);
@@ -34,32 +34,52 @@ function User() {
 
   const [StatusData, setStatusData] = useState(null);
 
-  useEffect(() => {
-    async function getStatusProfile() {
-      try {
-        const url = "https://saintdev.link/profile/status/";
-        const token = localStorage.getItem("token");
-        const response = await axios.get(url, {
-          headers: {
-            "x-access-token": token,
-          },
-        });
-
-        setStatusData(response.data);
-      } catch (err) {
-        console.log(err);
-      }
+  async function getStatusProfile() {
+    try {
+      const url = "https://saintdev.link/profile/status/";
+      const token = localStorage.getItem("token");
+      const response = await axios.get(url, {
+        headers: {
+          "x-access-token": token,
+        },
+      });
+      console.log(response.data);
+      setStatusData(response.data);
+    } catch (err) {
+      console.log(err);
     }
-
+  }
+  
+  useEffect(() => {
     getStatusProfile();
   }, []);
+  
+  async function adicionarStatusProfile(token, nomeDoAtributo, status) {
+    try {
+      const url = `https://saintdev.link/profile/status/${nomeDoAtributo}/add`;
+      const response = await axios.post(url, { status }, {
+        headers: {
+          "x-access-token": token,
+        },
+      });
+      console.log(response.data);
+      getStatusProfile(); // chama a função getStatusProfile após o sucesso da requisição POST
+      // Lógica adicional após o sucesso da requisição
+    } catch (err) {
+      console.log(err);
+      // Lógica adicional após o erro da requisição
+    }
+  }
+  
+
+
 
   return (
     <div className="UserApp">
       <SideMenu />
       <Login />
       <Nav />
-      <div className="SkillButton" onClick={()=>{document.querySelector('.SkillTree').style.display = 'block';document.querySelector('.SkillTree').style.animation = 'SkillAnimt 0.7s linear';new Audio(sound).play();document.body.style.overflowY = 'hidden'}}>
+      <div className="SkillButton" onClick={()=>{document.querySelector('.SkillTree').style.display = 'block';document.querySelector('.SkillTree').style.animation = 'SkillAnimt 0.7s linear';new Audio(sound).play();;document.body.style.overflowY = 'hidden'}}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="32"
@@ -75,13 +95,69 @@ function User() {
       <div className="SkillTree">
         <div className="SkillExit" onClick={()=>{document.querySelector('.SkillTree').style.display = 'none';document.body.style.overflowY = 'auto'}}>X</div>
         <img src="https://i.imgur.com/F2OsUtI.png"/>
+        {StatusData ? (
+
         <div className="Skills">
-            <div><h1>Força</h1><p>40</p> <button>Aumentar Atributo</button><img src="https://static.thenounproject.com/png/185171-200.png"/></div>
-            <div><h1>Destreza</h1><p>40</p> <button>Aumentar Atributo</button><img src="https://static.thenounproject.com/png/4494012-200.png"/></div>
-            <div><h1>Constituição</h1><p>40</p><button>Aumentar Atributo</button> <img src="https://cdn-icons-png.flaticon.com/512/6333/6333192.png"/></div>
-            <div><h1>Arcano</h1><p>40</p><button>Aumentar Atributo</button><img src="https://cdn-icons-png.flaticon.com/512/234/234515.png"/></div>
-            <div><h1>Inteligencia</h1><p>40</p><button>Aumentar Atributo</button> <img src="https://cdn-icons-png.flaticon.com/512/883/883039.png"/></div>
+                  <a>Free Points : {StatusData.free_point}</a>
+            <div><h1>Força</h1><p>{StatusData.str}</p> <button className="str" onClick={()=> {
+              const token = localStorage.getItem("token");
+              const nomeDoAtributo = "str";
+              const status = "Upando Status";
+              adicionarStatusProfile(token, nomeDoAtributo, status);
+            
+            
+              
+            
+            
+            }}>Aumentar Atributo</button><img src="https://static.thenounproject.com/png/185171-200.png"/></div>
+            <div><h1>Destreza</h1><p>{StatusData.dex}</p> <button className="dex" onClick={()=> {
+              const token = localStorage.getItem("token");
+              const nomeDoAtributo = "dex";
+              const status = "Upando Status";
+              adicionarStatusProfile(token, nomeDoAtributo, status);
+            
+            
+              
+            
+            
+            }}>Aumentar Atributo</button><img src="https://static.thenounproject.com/png/4494012-200.png"/></div>
+            <div><h1>Constituição</h1><p>{StatusData.cons}</p><button className="cons" onClick={()=> {
+              const token = localStorage.getItem("token");
+              const nomeDoAtributo = "cons";
+              const status = "Upando Status";
+              adicionarStatusProfile(token, nomeDoAtributo, status);
+            
+            
+              
+            
+            
+            }}>Aumentar Atributo</button> <img src="https://cdn-icons-png.flaticon.com/512/6333/6333192.png"/></div>
+            <div><h1>Sabedoria</h1><p>{StatusData.wis}</p><button onClick={()=> {
+              const token = localStorage.getItem("token");
+              const nomeDoAtributo = "wis";
+              const status = "Upando Status";
+              adicionarStatusProfile(token, nomeDoAtributo, status);
+            
+            
+              
+            
+            
+            }}>Aumentar Atributo</button><img src="https://cdn-icons-png.flaticon.com/512/234/234515.png"/></div>
+            <div><h1>Inteligencia</h1><p>{StatusData.int}</p><button onClick={()=> {
+              const token = localStorage.getItem("token");
+              const nomeDoAtributo = "int";
+              const status = "Upando Status";
+              adicionarStatusProfile(token, nomeDoAtributo, status);
+            
+            
+              
+            
+            
+            }}>Aumentar Atributo</button> <img src="https://cdn-icons-png.flaticon.com/512/883/883039.png"/></div>
         </div>
+        ) : (
+        <p>Carregando perfil...</p>
+      )}
       </div>
 
 
@@ -114,6 +190,7 @@ function User() {
             <h2>Historia</h2>
             <p>{userData.biography}</p>
           </div>
+          <p style={{textAlign : 'center',width : '100%',fontSize : '20px'}}>ID : </p>
         </div>
       ) : (
         <p>Carregando perfil...</p>
