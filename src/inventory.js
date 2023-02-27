@@ -3,9 +3,11 @@ import axios from "axios";
 import SideMenu from "./components/sidemenu";
 import Nav from "./components/nav";
 import Login from "./components/Login";
+import mySound from './inventory.mp3'
 
 function Inv() {
   const [items, setItems] = useState([]);
+
 
   useEffect(() => {
     async function getProfile() {
@@ -29,6 +31,8 @@ function Inv() {
 
   return (
     <div className="Inv">
+        <iframe src={mySound} allow="autoplay" id="iframeAudio"></iframe>
+
       <Nav></Nav>
       <SideMenu></SideMenu>
       <Login></Login>

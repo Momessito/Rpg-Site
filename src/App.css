@@ -20,7 +20,7 @@ body {
 
 .Side a {
   font-family: "Gloock", serif;
-  color: #eed895;
+  color: #e6dfcc;
   text-decoration: none;
   text-shadow: 0px 0px 10px #ffae00;
 }
@@ -171,7 +171,9 @@ body {
   width: 100%;
   height: 100vh;
   z-index: -100;
-  background-image: url("https://cdn.discordapp.com/attachments/1077978423147897003/1078015451327631360/inventory.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-image: url('https://cdn.discordapp.com/attachments/1077441049024282756/1078838351941079040/momessite_city_fantasy_rpg_backpack__adventure_3dbc72f3-f40e-4bbf-8ea2-2bda7b8226b1.png');
 }
 
 .inventarioTitle {
@@ -1894,13 +1896,112 @@ hr {
   z-index: -100;
   height: 100vh;
 }
-
+.SkillButton{
+  position: absolute;
+  top: 60px;
+  left: 20px;
+  z-index: 1000;
+}
+.SkillTree{
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: 1000;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-y: hidden;
+  display: none;
+}
+.SkillExit{
+  color: #b07b2b;
+  position: fixed;
+  font-size: xx-large;
+  font-weight: bold;
+  right: 20px;
+  top: 10px;
+  z-index: 1000;
+}
+.SkillTree img{
+  position: absolute;
+  background-image: url('https://i.imgur.com/F2OsUtI.png');
+  overflow: scroll;
+  width: 1000%;
+  height: 100%;
+}
+.SkillTree .Skills{
+  height: 100%;
+  display: flex;
+  width: 1000%;
+  color: #b07b2b;
+}
+.Skills div{
+  font-size: xx-large;
+  font-weight: bold;
+  text-shadow: 0px 0px 10px black;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+    justify-content: center;
+  background-image: url('https://freepngimg.com/download/games/88004-picture-recreation-square-frame-ornament-scalable-vector.png');
+  background-size: 50%;
+  filter:invert(44%) sepia(74%) saturate(439%) hue-rotate(357deg) brightness(99%) contrast(88%) drop-shadow(0px 0px 2px #b07b2b) ;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 200%;
+}
+.Skills div h1{
+  transform: translateY(150%);
+  font-size: 2rem;
+}
+.Skills div p{
+  transform: translateY(150%);
+  margin-left: 10px;
+  font-size: 2rem;
+}
+.Skills div button{
+position: absolute;
+bottom: 50px;
+background-color: transparent;
+border: 2px solid black;
+text-shadow: 0px 0px 5px black;
+}
+.Skills div img{
+  width: 27%;
+  filter:invert(44%) sepia(74%) saturate(439%) hue-rotate(357deg) brightness(99%) contrast(88%) drop-shadow(0px 0px 2px #b07b2b) ;
+  transform: translateY(-20%);
+  height: 20%;
+  
+  background-image: url();
+}
+@keyframes SkillAnimt{
+  0%{
+    transform: scale(2);
+    filter: blur(4px);
+    opacity: 0;
+  }100%{
+    transform: scale(1);
+    filter: blur(0px);
+    opacity: 1;
+  }
+}
+.Arcano{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0; 
+  z-index: 1001;
+}
 .target {
   position: absolute;
   width: 50px;
   height: 50px;
   border-radius: 50%;
   background-color: rgb(172, 11, 11);
+  background-image: url('https://images.vexels.com/media/users/3/150942/isolated/lists/2e6fc7d9e16c8f59691704a2745e41c3-decorative-circle-ornament.png');
+  background-size: 100% 100%;
   border: 5px solid #fcac00;
   box-shadow: 0px 0px 15px #fcac00;
   z-index: 1000000;
@@ -2061,16 +2162,16 @@ hr {
   font-size: large !important;
 }
 
-.item-inv:active {
+.item-inv:hover {
   transform: rotateY(180deg);
 }
-.item-inv:active img {
+.item-inv:hover img {
   display: none;
 }
-.item-inv:active .item-text {
+.item-inv:hover .item-text {
   display: none;
 }
-.item-inv:active .item-desc {
+.item-inv:hover .item-desc {
   display: block;
   transform: rotateY(180deg);
 }
@@ -2090,6 +2191,7 @@ width: 50px;
 }
 .Shop img{
   width: 70%;
+  height: 70%;
   border: 2px solid #B17C2A;
   border-radius: 5px;
 }

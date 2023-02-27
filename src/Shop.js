@@ -37,12 +37,12 @@ function Shop() {
     // rotas
     <div className="">
       <SideMenu></SideMenu>
-      <h2 className="Login">Log In</h2>
       <Nav></Nav>
       <img
         style={{ width: "100%" }}
         src="https://cdn.discordapp.com/ephemeral-attachments/946523460060975157/1077328424969969814/grid_0.webp"
       />
+      
       <div className="FadeProfile"></div>
       <h1 style={{ textAlign: "center" }}>Shop</h1>
 

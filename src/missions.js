@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Login from "./components/Login";
 import Nav from "./components/nav";
 import SideMenu from "./components/sidemenu";
+import mySound from './inventory.mp3'
 
 const missions = [
   {
@@ -172,6 +173,7 @@ function Missions() {
                     <Nav></Nav>
         <SideMenu></SideMenu>
         <Login></Login>
+        <iframe src={mySound} allow="autoplay" id="iframeAudio"></iframe>
       <div className="mission-board">
 
         <h1>Missões disponíveis:</h1>
