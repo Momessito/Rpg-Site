@@ -1908,7 +1908,7 @@ hr {
   left: 0px;
   z-index: 1000;
   width: 100%;
-  height: 100%;
+  height: 170%;
   margin: 0;
   padding: 0;
   overflow-y: hidden;
@@ -1928,13 +1928,15 @@ hr {
   position: absolute;
   background-image: url('https://i.imgur.com/F2OsUtI.png');
   overflow: scroll;
-  width: 1000%;
+  width: 100%;
   height: 100%;
 }
 .SkillTree .Skills{
+  margin-top: 50px;
   height: 100%;
   display: flex;
-  width: 1000%;
+  flex-direction: column;
+  width: 100%;
   color: #b07b2b;
 }
 .Skills div{
@@ -1943,42 +1945,68 @@ hr {
   text-shadow: 0px 0px 10px black;
   z-index: 100;
   display: flex;
+  flex-direction: column;
+  margin: 15px;
+  padding: 5px;
+  background: radial-gradient(#7e6c38 3px, transparent 4px),
+  radial-gradient(#7e6c38 3px, transparent 4px),
+  linear-gradient(#070711 4px, transparent 0),
+  linear-gradient(
+    45deg,
+    transparent 74px,
+    transparent 75px,
+    #7e6c38 75px,
+    #7e6c38 76px,
+    transparent 77px,
+    transparent 109px
+  ),
+  linear-gradient(
+    -45deg,
+    transparent 75px,
+    transparent 76px,
+    #7e6c38 76px,
+    #7e6c38 77px,
+    transparent 78px,
+    transparent 109px
+  ),
+  #070711;
+background-size: 109px 109px, 109px 109px, 100% 6px, 109px 109px, 109px 109px;
+background-position: 54px 55px, 0px 0px, 0px 0px, 0px 0px, 0px 0px;
+  border: 1px solid white;
   align-items: center;
     justify-content: center;
-  background-image: url('https://freepngimg.com/download/games/88004-picture-recreation-square-frame-ornament-scalable-vector.png');
-  background-size: 40%;
-  filter:invert(44%) sepia(74%) saturate(439%) hue-rotate(357deg) brightness(99%) contrast(88%) drop-shadow(0px 0px 2px #b07b2b) ;
-  background-repeat: no-repeat;
-  background-position: center;
-  width: 200%;
 }
 .Skills div h1{
-  transform: translateY(150%);
   font-size: 2rem;
+  color: black;
+  text-shadow: 0px 0px 5px white;
 }
 .Skills div p{
-  transform: translateY(150%);
   margin-left: 10px;
   font-size: 2rem;
+  color: white;
+  text-shadow: 0px 0px 5px #fcac00;
 }
 .SkillTree a{
   position: fixed;
   z-index: auto;
+  color: white;
+  text-shadow: 0px 0px 5px black;
   top: 10px;
   width: 100%;
   text-align: center;
+  z-index: 10000;
 
 }
 .Skills div button{
-position: absolute;
 bottom: 50px;
-background-color: transparent;
+background-color: black;
 border: 2px solid black;
-text-shadow: 0px 0px 5px black;
+text-shadow: 0px 0px 5px rgb(0, 0, 0);
+padding: 15px 5px;
 }
 .Skills div img{
   width: 17%;
-  filter:invert(44%) sepia(74%) saturate(439%) hue-rotate(357deg) brightness(99%) contrast(88%) drop-shadow(0px 0px 2px #b07b2b) ;
   transform: translateY(-20%);
   height: 14%;
   
@@ -2200,7 +2228,7 @@ width: 50px;
 }
 .Shop img{
   width: 70%;
-  height: 70%;
+  height: 60%;
   border: 2px solid #B17C2A;
   border-radius: 5px;
 }
@@ -2244,4 +2272,37 @@ width: 50px;
   color: #B17C2A;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.699);
   border: 2px solid #B17C2A;
+}
+
+.Armor{
+  width: 50px;
+  height: 50px;
+  background-color: #140501;
+  border: 2px solid #B17C2A;
+  opacity: 0.7;
+  position: absolute;
+  background-image: url('https://cdn.discordapp.com/attachments/1077978423147897003/1080947610048802837/armor.png');
+  background-size: 100% 100%;
+  z-index: 100;
+  left: 20px;
+  border-radius: 5px;
+}
+.Weapons{
+  width: 50px;
+  height: 50px;
+  background-color: #140501;
+  border: 2px solid #B17C2A;
+  opacity: 0.7;
+  position: absolute;
+  background-image: url('https://cdn.discordapp.com/attachments/1077978423147897003/1080948219133050962/sword.png');
+  background-size: 100% 100%;
+  z-index: 100;
+  left: 20px;
+  border-radius: 5px;
+}
+.Armor{
+  top: 110px;
+}
+.Weapons{
+  top: 180px;
 }

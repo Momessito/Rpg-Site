@@ -4,7 +4,7 @@ import SideMenu from "./components/sidemenu";
 import React, { useState } from "react";
 import ticket from "./bilhete.png";
 
-const nomes = ["João", "Maria", "Pedro", "Ana", "Lucas", "Bianca", "Carlos"];
+const nomes = ["100 G", "98 G", "Nada", "Nada", "Nada", "Nada", "Nada", "50 G","20 G","25 G","10 G","5 G","100 G", "98 G", "Nada", "Nada", "Nada", "Nada", "Nada", "50 G","20 G","25 G","10 G","5 G","100 G", "98 G", "Nada", "Nada", "Nada", "Nada", "Nada", "50 G","20 G","25 G","10 G","5 G","100 G", "98 G", "Nada", "Nada", "Nada", "Nada", "Nada", "50 G","20 G","25 G","10 G","5 G","500 G","1000 G"];
 
 const Sorteador = () => {
   const [nomeSorteado, setNomeSorteado] = useState(null);

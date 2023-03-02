@@ -2,19 +2,20 @@ import React, { Component } from 'react';
 import Nav from './components/nav';
 import Login from './components/Login';
 import SideMenu from './components/sidemenu';
-import mySound from './tct.mp3'
+import mySound from './tct.mp3';
+import axios from 'axios';
 
 class Tct extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       score: 0,
-      timeLeft: 190,
+      timeLeft: 30,
       targetX: 0,
       targetY: 0,
       gameOver: false,
-      gameStarted: false
+      gameStarted: false,
+      postSent: false
     };
 
     this.handleTargetClick = this.handleTargetClick.bind(this);
@@ -28,27 +29,49 @@ class Tct extends Component {
   }
 
   startGame() {
+    const url = "https://saintdev.link/tct";
+    const token = localStorage.getItem("token");
+  
     this.setState({
       score: 0,
-      timeLeft: 190,
+      timeLeft: 30,
       gameOver: false,
-      gameStarted: true
+      gameStarted: true,
+      postSent: false
     });
-
+  
     this.generateNewTarget();
+  
     this.timerInterval = setInterval(() => {
       if (this.state.timeLeft === 0) {
         clearInterval(this.timerInterval);
         this.setState({
           gameOver: true
         });
+  
+        if (!this.state.postSent) {
+          // POST request to url
+          axios.post(url, { points: this.state.score }, { headers: { "x-access-token": token } })
+            .then(response => {
+              console.log(response);
+            })
+            .catch(error => {
+              console.error(error);
+            })
+            .finally(() => {
+              this.setState({
+                postSent: true
+              });
+            });
+        }
       } else {
-        this.setState({
-          timeLeft: this.state.timeLeft - 1
-        });
+        this.setState(prevState => ({
+          timeLeft: prevState.timeLeft - 1
+        }));
       }
     }, 1000);
   }
+  
 
   generateNewTarget() {
     const targetSize = 50;
@@ -79,7 +102,7 @@ class Tct extends Component {
     clearInterval(this.timerInterval);
     this.setState({
       score: 0,
-      timeLeft: 190,
+      timeLeft: 30,
       targetX: 0,
       targetY: 0,
       gameOver: false,
@@ -89,8 +112,6 @@ class Tct extends Component {
 
   render() {
     const { score, timeLeft, targetX, targetY, gameOver, gameStarted } = this.state;
-
-    const date = new Date().toLocaleString();
 
     return (
         <div className='tct'> 
@@ -104,15 +125,14 @@ class Tct extends Component {
       <div className="RandomClickGame">
 
         <div className="header">
-          <div className="score">Score: {score}</div>
-          <div className="time-left">Time left: {timeLeft}s</div>
-          <div className="date">{date}</div>
+          <div className="score">Pontuação: {score}</div>
+          <div className="time-left">Tempo faltando: {timeLeft}s</div>
         </div>
         {gameOver ? (
           <div className="game-over-message">
-            Game over! Your score is {score}
+            O jogo Acabou! Sua pontuação foi:  {score}
             <button className="restart-button" onClick={this.handleRestartClick}>
-              Restart Game
+              Resetar o Jogo
             </button>
           </div>
         ) : (
@@ -127,7 +147,7 @@ class Tct extends Component {
         )}
         {!gameStarted && !gameOver && (
           <button className="start-button" onClick={this.handleStartClick}>
-            Start Game
+            Iniciar
           </button>
         )}
       </div>

@@ -54,7 +54,7 @@ function Shop() {
             <li key={item.id}>
               <img src={item.img}/>
               <h2>{item.name}</h2>
-              <h5>{item.price} Moedas de bronze</h5>
+              <h5>{item.price} G</h5>
               <button onClick={() => buyItem(item.id,item.name)}>Comprar</button>
             </li>
           ))}

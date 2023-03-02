@@ -81,6 +81,8 @@ function User() {
       <SideMenu />
       <Login />
       <Nav />
+      <div className="Armor"></div>
+      <div className="Weapons"></div>
       <div
         className="SkillButton"
         onClick={() => {
@@ -88,7 +90,7 @@ function User() {
           document.querySelector(".SkillTree").style.animation =
             "SkillAnimt 0.7s linear";
           new Audio(sound).play();
-          document.body.style.overflowY = "hidden";
+          document.body.style.overflowX = "auto";
         }}
       >
         <svg
@@ -107,12 +109,12 @@ function User() {
           className="SkillExit"
           onClick={() => {
             document.querySelector(".SkillTree").style.display = "none";
-            document.body.style.overflowY = "auto";
+            document.body.style.overflowX = "auto";
           }}
         >
           X
         </div>
-        <img src="https://i.imgur.com/F2OsUtI.png" />
+        <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/2f9e57ab-8ae1-4b64-9811-5f54bd27114d/dd45lgk-cc827193-cf12-4186-b1e7-e9f45e170f9c.jpg/v1/fill/w_1024,h_1821,q_75,strp/abstract_neon_wallpaper_9_16_by_zenoeon_dd45lgk-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTgyMSIsInBhdGgiOiJcL2ZcLzJmOWU1N2FiLThhZTEtNGI2NC05ODExLTVmNTRiZDI3MTE0ZFwvZGQ0NWxnay1jYzgyNzE5My1jZjEyLTQxODYtYjFlNy1lOWY0NWUxNzBmOWMuanBnIiwid2lkdGgiOiI8PTEwMjQifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.T1--dmwHg-Me_FPpokpEcqere7E3gAq58I6l1E7ZFxw" />
         {StatusData ? (
           <div className="Skills">
             <a>Free Points : {StatusData.free_point}</a>
@@ -130,7 +132,7 @@ function User() {
               >
                 Aumentar Atributo
               </button>
-              <img src="https://static.thenounproject.com/png/185171-200.png" />
+              
             </div>
             <div>
               <h1>Destreza</h1>
@@ -146,7 +148,6 @@ function User() {
               >
                 Aumentar Atributo
               </button>
-              <img src="https://static.thenounproject.com/png/4494012-200.png" />
             </div>
             <div>
               <h1>Constituição</h1>
@@ -162,7 +163,6 @@ function User() {
               >
                 Aumentar Atributo
               </button>{" "}
-              <img src="https://cdn-icons-png.flaticon.com/512/6333/6333192.png" />
             </div>
             <div>
               <h1>Sabedoria</h1>
@@ -177,7 +177,6 @@ function User() {
               >
                 Aumentar Atributo
               </button>
-              <img src="https://cdn-icons-png.flaticon.com/512/234/234515.png" />
             </div>
             <div>
               <h1>Inteligencia</h1>
@@ -192,7 +191,6 @@ function User() {
               >
                 Aumentar Atributo
               </button>{" "}
-              <img src="https://cdn-icons-png.flaticon.com/512/883/883039.png" />
             </div>
           </div>
         ) : (
@@ -228,6 +226,9 @@ function User() {
           <p style={{ textAlign: "center", width: "100%", fontSize: "20px" }}>
             ID :{" "}
           </p>
+
+
+
         </div>
       ) : (
         <p>Carregando perfil...</p>
