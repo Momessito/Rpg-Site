@@ -19,8 +19,16 @@ const Sorteador = () => {
     const hoje = agora.toDateString();
 
 
+    if (ultimaDataDeUso === hoje) {
+      alert("Você já usou a roleta hoje. Tente novamente amanhã!");
+      return;
+    }
 
-
+    if (hora < 0 || hora >= 2) {
+      alert("A roleta só pode ser usada entre meia-noite e 2h da manhã!");
+      return;
+    }
+    
     const indice = Math.floor(Math.random() * nomes.length);
     const nomeSorteado = nomes[indice];
 
