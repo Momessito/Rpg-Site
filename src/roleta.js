@@ -3,6 +3,7 @@ import Nav from "./components/nav";
 import SideMenu from "./components/sidemenu";
 import React, { useState } from "react";
 import ticket from "./bilhete.png";
+import axios from "axios";
 
 const nomes = ["100 G", "98 G", "Nada", "Nada", "Nada", "Nada", "Nada", "50 G","20 G","25 G","10 G","5 G","100 G", "98 G", "Nada", "Nada", "Nada", "Nada", "Nada", "50 G","20 G","25 G","10 G","5 G","100 G", "98 G", "Nada", "Nada", "Nada", "Nada", "Nada", "50 G","20 G","25 G","10 G","5 G","100 G", "98 G", "Nada", "Nada", "Nada", "Nada", "Nada", "50 G","20 G","25 G","10 G","5 G","500 G","1000 G"];
 
@@ -17,19 +18,36 @@ const Sorteador = () => {
     const hora = agora.getHours();
     const hoje = agora.toDateString();
 
-    if (ultimaDataDeUso === hoje) {
-      alert("Você já usou a roleta hoje. Tente novamente amanhã!");
-      return;
-    }
 
-    if (hora < 0 || hora >= 2) {
-      alert("A roleta só pode ser usada entre meia-noite e 2h da manhã!");
-      return;
-    }
+
 
     const indice = Math.floor(Math.random() * nomes.length);
     const nomeSorteado = nomes[indice];
 
+
+
+    async function Roleta() {
+      try {
+        const url = `https://saintdev.link/profile/money/add`;
+        const token = localStorage.getItem("token");
+        const money = parseInt(nomeSorteado);
+        console.log(money)
+        const response = await axios.post(
+          url,
+          { money : money },
+          {
+            headers: {
+              "x-access-token": token,
+            },
+          }
+        );
+        console.log(response.data);
+      } catch (err) {
+        console.log(err);
+        // Lógica adicional após o erro da requisição
+      }
+    }
+    Roleta()
     setNomeSorteado(nomeSorteado);
     setUltimaDataDeUso(hoje);
 
@@ -60,7 +78,7 @@ const Sorteador = () => {
         {nomeSorteado && (
       <div className="ticket">
             <div style={{ marginTop: "30px" }}>
-              O nome sorteado foi: <br /> <span>{nomeSorteado}</span>
+              O nome sorteado foi: <br /> <span className="roleta">{nomeSorteado}</span>
             </div>
           </div>
         )}
