@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { point } from 'leaflet';
+import attack from './attack.mp3'
+import ost from './ost.mp3'
+import Nav from './components/nav';
+import SideMenu from './components/sidemenu';
 
 function Game() {
   const [monsters, setMonsters] = useState([
@@ -15,7 +19,7 @@ function Game() {
     {
       name: 'Vampiro',
       description: 'Uma criatura mística que se alimenta de sangue humano.',
-      image: 'vampire.png',
+      image: 'https://i.pinimg.com/originals/5a/e4/88/5ae488d2ae5fd0b31dcb29ed7c1d088a.jpg',
       damage: 20,
       health: 100,
       xp: 50,
@@ -142,6 +146,7 @@ function Game() {
 
   function handleAttack() {
     // Ataque do jogador ao monstro
+    new Audio(attack).play();
     const damageToMonster = player.str + 10;
     const newMonsterHealth = currentMonster.health - damageToMonster;
     setCurrentMonster({
@@ -195,6 +200,9 @@ function Game() {
 
   return (
   <div className='Game'>
+    <Nav></Nav>
+    <SideMenu></SideMenu>
+     <iframe src={ost} allow="autoplay" id="iframeAudio"></iframe>
   {!gameStarted && (
   <div>
   <h1 className='Weacome'>Bem-vindo ao Coliseu</h1>
@@ -233,7 +241,7 @@ function Game() {
           <button onClick={handleAttack}>Atacar</button>
         </div>
       )}
-      <h2 className='turn' style={{textAlign : 'center'}}>Round {turn}</h2>
+      <h2 className='turn' style={{textAlign : 'center'}}>Rodada {turn}</h2>
 
 
 

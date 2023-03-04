@@ -17,6 +17,7 @@ function SideMenu() {
     <li><a href="/friends">Taberna</a></li>
     <li><a href="/roleta">Roleta</a></li>
     <li><a href="/tct">TCT</a></li>
+    <li><a href="/game">Coliseu</a></li>
 </ul>
 <img src={orn}/>
 
