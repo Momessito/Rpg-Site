@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { point } from 'leaflet';
 
 function Game() {
   const [monsters, setMonsters] = useState([
@@ -70,11 +71,50 @@ function Game() {
   }
 
   function endGame() {
+    // Define as informações necessárias para a solicitação em axios
+    const url = 'https://saintdev.link/tct';
+    const token = localStorage.getItem('token');
+    let points = 0;
+  
+    const monsterXP = parseInt(document.querySelector('.monsterxp').innerHTML) * 10;
+    const winner = document.querySelector('.Winner').innerHTML
+    console.log(winner)
+
+    // Verifica se o jogador ganhou ou perdeu o jogo
+    if (winner == 'Você ganhou!') {
+      // Se ganhou, os pontos são iguais ao XP do monstro
+      points = monsterXP;
+    } else {
+      // Se perdeu, os pontos são iguais ao XP do monstro multiplicado por -1
+      points = -1 * monsterXP;
+    }
+  
+    // Faz a solicitação em axios usando o método POST
+    const response = axios
+      .post(
+        url,
+        { points: points },
+        {
+          headers: {
+            'x-access-token': token,
+          },
+        }
+      )
+      .then((response) => {
+        console.log('Solicitação enviada com sucesso!');
+      })
+      .catch((error) => {
+        console.log('Ocorreu um erro ao enviar a solicitação:');
+        console.log(error);
+      });
+  
+    // Reseta os estados do jogo
     setGameStarted(false);
     setCurrentMonster({});
     setWinner(null);
     setTurn(0);
   }
+  
 
   function handleAttack() {
     // Ataque do jogador ao monstro
@@ -134,7 +174,7 @@ function Game() {
             <img src={currentMonster.image} alt={currentMonster.name} />
             <p>Vida: {currentMonster.health}</p>
             <p>Dano: {currentMonster.damage}</p>
-            <p>Xp: {currentMonster.xp}</p>
+            <p >Xp: <span className='monsterxp'>{currentMonster.xp / 10}</span></p>
           </div>
         )}
       </div>
@@ -151,7 +191,7 @@ function Game() {
       </div>
       {winner && (
         <div className='Attack'>
-          <h3>{winner === 'player' ? 'Você ganhou! ' : 'Você perdeu!'}</h3>
+          <h3 className='Winner'>{winner === 'player' ? 'Você ganhou!' : 'Você perdeu!'}</h3>
           <button onClick={endGame}>Jogar Novamente</button>
         </div>
       )}
