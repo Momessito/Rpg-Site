@@ -22,7 +22,7 @@ function User() {
             "x-access-token": token,
           },
         });
-
+        console.log(response.data);
         setUserData(response.data);
       } catch (err) {
         console.log(err);
@@ -76,6 +76,7 @@ function User() {
     }
   }
 
+  
   return (
     <div className="UserApp">
       <SideMenu />
@@ -192,6 +193,34 @@ function User() {
                 Aumentar Atributo
               </button>{" "}
             </div>
+            <div>
+              <h1>Charme</h1>
+              <p>{StatusData.charm}</p>
+              <button
+                onClick={() => {
+                  const token = localStorage.getItem("token");
+                  const nomeDoAtributo = "charm";
+                  const status = "Upando Status";
+                  adicionarStatusProfile(token, nomeDoAtributo, status);
+                }}
+              >
+                Aumentar Atributo
+              </button>{" "}
+            </div>
+            <div>
+              <h1>Luck</h1>
+              <p>{StatusData.luck}</p>
+              <button
+                onClick={() => {
+                  const token = localStorage.getItem("token");
+                  const nomeDoAtributo = "luck";
+                  const status = "Upando Status";
+                  adicionarStatusProfile(token, nomeDoAtributo, status);
+                }}
+              >
+                Aumentar Atributo
+              </button>{" "}
+            </div>
           </div>
         ) : (
           <p>Carregando perfil...</p>
@@ -200,39 +229,55 @@ function User() {
 
       <iframe src={mySound} allow="autoplay" id="iframeAudio"></iframe>
       {userData ? (
-        <div className="Profile">
-          <img src={userData.img} alt="Avatar do usuário" />
-          <div className="FadeProfile"></div>
-          <div className="ProfileInfo">
-            <h2>
-              Nome: <span>{userData.name}</span>
-            </h2>
-            <h2>
-              Raça: <span>{userData.race}</span>
-            </h2>
-            <h2>
-              Money: <span>{userData.money}</span>
-            </h2>
-            <h2>
-              Idade: <span>{userData.age}</span>
-            </h2>
-            <div className="ProfileRank"></div>
-          </div>
+  <div className="Profile">
+    <img src={userData.img} alt="Avatar do usuário" />
+    <div className="FadeProfile"></div>
+    <div className="ProfileInfo">
+      <h2>
+        Nome: <span>{userData.name}</span>
+      </h2>
+      <h2>
+        Raça: <span>{userData.race}</span>
+      </h2>
+      <h2>
+        Money: <span>{userData.money}</span>
+      </h2>
+      <h2>
+        Idade: <span>{userData.age}</span>
+      </h2>
+      {StatusData && (
+        <div>
+          <h2>Level: <span>{StatusData.lv}</span></h2>
+      <h2>
+      XP: <span>
+        <div className="XPAtual">{StatusData.xp} / {StatusData.lv}00</div>
+        </span>
 
-          <div className="ProfileAdicional">
-            <h2>Historia</h2>
-            <p>{userData.biography}</p>
-          </div>
-          <p style={{ textAlign: "center", width: "100%", fontSize: "20px" }}>
-            ID :{" "}
-          </p>
+    </h2>
+      <h2 style={{marginTop : '30px'}}>
+      Hp: <span>
+        <div className="Health">{StatusData.hp}</div>
+        </span>
 
-
-
-        </div>
-      ) : (
-        <p>Carregando perfil...</p>
+    </h2>
+    </div>
       )}
+      <div className="ProfileRank"></div>
+    </div>
+
+    <div className="ProfileAdicional">
+      <h2>Historia</h2>
+      <p>{userData.biography}</p>
+    </div>
+
+    <p style={{ textAlign: "center", width: "100%", fontSize: "20px" }}>
+      ID :{userData.user_id}
+    </p>
+  </div>
+) : (
+  <p>Carregando perfil...</p>
+)}
+
       <Footer />
     </div>
   );

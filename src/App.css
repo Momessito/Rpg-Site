@@ -1908,7 +1908,7 @@ hr {
   left: 0px;
   z-index: 1000;
   width: 100%;
-  height: 170%;
+  height: auto;
   margin: 0;
   padding: 0;
   overflow-y: hidden;
@@ -2275,34 +2275,161 @@ width: 50px;
 }
 
 .Armor{
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   background-color: #140501;
-  border: 2px solid #B17C2A;
+  border: 2px solid #eed895;
   opacity: 0.7;
   position: absolute;
-  background-image: url('https://cdn.discordapp.com/attachments/1077978423147897003/1080947610048802837/armor.png');
+  background-image: url('https://cdn.discordapp.com/attachments/1077978423147897003/1081417135072497785/sword.png');
   background-size: 100% 100%;
   z-index: 100;
   left: 20px;
   border-radius: 5px;
+  padding: 5px;
 }
 .Weapons{
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   background-color: #140501;
-  border: 2px solid #B17C2A;
+  border: 2px solid #eed895;
   opacity: 0.7;
   position: absolute;
-  background-image: url('https://cdn.discordapp.com/attachments/1077978423147897003/1080948219133050962/sword.png');
+  background-image: url('https://cdn.discordapp.com/attachments/1077978423147897003/1081417134858571776/armor.png');
   background-size: 100% 100%;
   z-index: 100;
   left: 20px;
   border-radius: 5px;
+  padding: 5px;
 }
 .Armor{
   top: 110px;
 }
 .Weapons{
   top: 180px;
+}
+.XPMax{
+  width: 100%;
+  background-color: #eed895;
+  border-radius: 5px;
+
+}
+.XPAtual{
+  width: 60%;
+  margin-left: 20%;
+  margin-right: 20%;
+  background-color: #88c77b;
+  border-radius: 5px;
+  position: absolute;
+}
+.Health{
+  width: 60%;
+  margin-left: 20%;
+  margin-right: 20%;
+  background-color: #ce5353;
+  border-radius: 5px;
+  position: absolute;
+}
+
+.Game{
+  background-image: url('https://i.pinimg.com/originals/ff/43/87/ff4387421306f1a4c0dbf6ab6a83488b.jpg');
+  background-size: 130% 100%;
+  background-position: center;
+  width: 100%;
+  color: white;
+  height: 100vh;
+  text-shadow: 0px 0px 10px black;
+text-align: center;
+}
+.MonsterCard{
+  width: 60%;
+  background-size: 30%;
+  border: 2px solid black;
+  top: 0;
+  margin-left: 50%;
+  background-color: #140501;
+  padding: 10px;
+  border-radius: 15px;
+  animation: flip-in-hor-bottom 1.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+@keyframes flip-in-hor-bottom {
+  0% {
+    transform: rotateX(80deg) translate(-50%);
+    opacity: 0;
+  }
+  100% {
+    transform: rotateX(0) translate(-50%);
+    opacity: 1;
+  }
+}
+
+.PlayerCard{
+  width: calc(100% - 20px);
+  background-image: url('https://i.pinimg.com/originals/16/1e/52/161e527774c365a8713d8dd66e52e648.jpg');
+  background-size: 30%;
+  background-color: #140501;
+  border-top: 15px solid black;
+  border-top-right-radius:15px;
+  border-top-left-radius:15px;
+  padding: 10px;
+  animation: scale-in-ver-bottom 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+
+}
+@keyframes scale-in-ver-bottom {
+  0% {
+    transform: scaleY(0);
+    transform-origin: 0% 100%;
+    opacity: 1;
+  }
+  100% {
+    transform: scaleY(1);
+    transform-origin: 0% 100%;
+    opacity: 1;
+  }
+}
+.MonsterCard img{
+  width: 100%;
+}
+.Attack{
+  position: absolute;
+  top: 0;
+  text-align: center;
+  width: 100%;
+}
+.gameint{
+  margin-top: 70px;
+}
+.Weacome{
+  color: #eed895;
+  text-shadow: 0px 0px 10px rgb(172, 11, 11);
+}
+.Attack button{
+  width: 80%;
+  padding-bottom: 15px;
+  border: none;
+  border-radius: 0;
+  font-size: larger;
+  background-color: #013243;
+  border-bottom: 10px solid black;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  animation: scale-in-ver-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+.Attack button:active{
+
+  border-bottom: 0px solid black;
+
+}
+@keyframes scale-in-ver-top {
+  0% {
+    transform: scaleY(0);
+    transform-origin: 100% 0%;
+    opacity: 1;
+  }
+  100% {
+    transform: scaleY(1);
+    transform-origin: 100% 0%;
+    opacity: 1;
+  }
 }

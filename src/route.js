@@ -14,6 +14,7 @@ import War from './ambientation/War';
 import Tct from './tct';
 import Sea from './ambientation/Sea';
 import Inv from './inventory';
+import Game from './game';
 function App() {
   
 
@@ -36,6 +37,7 @@ return(
       <Route path="/tct" element={<Tct />} />
       <Route path="/sea" element={<Sea />} />
       <Route path="/inventory" element={<Inv />} />
+      <Route path="/game" element={<Game />} />
     </Routes>
   </Router>
 )
