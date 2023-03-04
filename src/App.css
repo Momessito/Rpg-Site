@@ -161,11 +161,11 @@ body {
   color: white;
   height: 40px;
 }
-.item-inv p{
+.item-inv p {
   font-size: small !important;
   width: 80%;
   overflow: hidden;
-  color: #B17C2A;
+  color: #b17c2a;
 }
 .inventoryW {
   width: 100%;
@@ -173,7 +173,7 @@ body {
   z-index: -100;
   background-size: 100% 100%;
   background-repeat: no-repeat;
-  background-image: url('https://cdn.discordapp.com/attachments/1077441049024282756/1078838351941079040/momessite_city_fantasy_rpg_backpack__adventure_3dbc72f3-f40e-4bbf-8ea2-2bda7b8226b1.png');
+  background-image: url("https://cdn.discordapp.com/attachments/1077441049024282756/1078838351941079040/momessite_city_fantasy_rpg_backpack__adventure_3dbc72f3-f40e-4bbf-8ea2-2bda7b8226b1.png");
 }
 
 .inventarioTitle {
@@ -646,8 +646,7 @@ nav svg {
   width: 100%;
   margin-top: 500px;
   text-shadow: 0px 0px 10px #fcac00;
-  animation: texta 5.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)
-    infinite;
+  animation: texta 5.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
 }
 
 .subtitle {
@@ -1896,13 +1895,13 @@ hr {
   z-index: -100;
   height: 100vh;
 }
-.SkillButton{
+.SkillButton {
   position: absolute;
   top: 60px;
   left: 20px;
   z-index: 1000;
 }
-.SkillTree{
+.SkillTree {
   position: absolute;
   top: 0px;
   left: 0px;
@@ -1914,7 +1913,7 @@ hr {
   overflow-y: hidden;
   display: none;
 }
-.SkillExit{
+.SkillExit {
   color: #b07b2b;
   position: fixed;
   font-size: xx-large;
@@ -1923,15 +1922,15 @@ hr {
   top: 10px;
   z-index: 1000;
 }
-.SkillTree img{
+.SkillTree img {
   z-index: -1;
   position: absolute;
-  background-image: url('https://i.imgur.com/F2OsUtI.png');
+  background-image: url("https://i.imgur.com/F2OsUtI.png");
   overflow: scroll;
   width: 100%;
   height: 100%;
 }
-.SkillTree .Skills{
+.SkillTree .Skills {
   margin-top: 50px;
   height: 100%;
   display: flex;
@@ -1939,7 +1938,7 @@ hr {
   width: 100%;
   color: #b07b2b;
 }
-.Skills div{
+.Skills div {
   font-size: xx-large;
   font-weight: bold;
   text-shadow: 0px 0px 10px black;
@@ -1949,45 +1948,45 @@ hr {
   margin: 15px;
   padding: 5px;
   background: radial-gradient(#7e6c38 3px, transparent 4px),
-  radial-gradient(#7e6c38 3px, transparent 4px),
-  linear-gradient(#070711 4px, transparent 0),
-  linear-gradient(
-    45deg,
-    transparent 74px,
-    transparent 75px,
-    #7e6c38 75px,
-    #7e6c38 76px,
-    transparent 77px,
-    transparent 109px
-  ),
-  linear-gradient(
-    -45deg,
-    transparent 75px,
-    transparent 76px,
-    #7e6c38 76px,
-    #7e6c38 77px,
-    transparent 78px,
-    transparent 109px
-  ),
-  #070711;
-background-size: 109px 109px, 109px 109px, 100% 6px, 109px 109px, 109px 109px;
-background-position: 54px 55px, 0px 0px, 0px 0px, 0px 0px, 0px 0px;
+    radial-gradient(#7e6c38 3px, transparent 4px),
+    linear-gradient(#070711 4px, transparent 0),
+    linear-gradient(
+      45deg,
+      transparent 74px,
+      transparent 75px,
+      #7e6c38 75px,
+      #7e6c38 76px,
+      transparent 77px,
+      transparent 109px
+    ),
+    linear-gradient(
+      -45deg,
+      transparent 75px,
+      transparent 76px,
+      #7e6c38 76px,
+      #7e6c38 77px,
+      transparent 78px,
+      transparent 109px
+    ),
+    #070711;
+  background-size: 109px 109px, 109px 109px, 100% 6px, 109px 109px, 109px 109px;
+  background-position: 54px 55px, 0px 0px, 0px 0px, 0px 0px, 0px 0px;
   border: 1px solid white;
   align-items: center;
-    justify-content: center;
+  justify-content: center;
 }
-.Skills div h1{
+.Skills div h1 {
   font-size: 2rem;
   color: black;
   text-shadow: 0px 0px 5px white;
 }
-.Skills div p{
+.Skills div p {
   margin-left: 10px;
   font-size: 2rem;
   color: white;
   text-shadow: 0px 0px 5px #fcac00;
 }
-.SkillTree a{
+.SkillTree a {
   position: fixed;
   z-index: auto;
   color: white;
@@ -1996,39 +1995,39 @@ background-position: 54px 55px, 0px 0px, 0px 0px, 0px 0px, 0px 0px;
   width: 100%;
   text-align: center;
   z-index: 10000;
-
 }
-.Skills div button{
-bottom: 50px;
-background-color: black;
-border: 2px solid black;
-text-shadow: 0px 0px 5px rgb(0, 0, 0);
-padding: 15px 5px;
+.Skills div button {
+  bottom: 50px;
+  background-color: black;
+  border: 2px solid black;
+  text-shadow: 0px 0px 5px rgb(0, 0, 0);
+  padding: 15px 5px;
 }
-.Skills div img{
+.Skills div img {
   width: 17%;
   transform: translateY(-20%);
   height: 14%;
-  
+
   background-image: url();
 }
-@keyframes SkillAnimt{
-  0%{
+@keyframes SkillAnimt {
+  0% {
     transform: scale(2);
     filter: blur(4px);
     opacity: 0;
-  }100%{
+  }
+  100% {
     transform: scale(1);
     filter: blur(0px);
     opacity: 1;
   }
 }
-.Arcano{
+.Arcano {
   position: absolute;
   width: 100%;
   height: 100%;
   top: 0;
-  left: 0; 
+  left: 0;
   z-index: 1001;
 }
 .target {
@@ -2037,7 +2036,7 @@ padding: 15px 5px;
   height: 50px;
   border-radius: 50%;
   background-color: rgb(172, 11, 11);
-  background-image: url('https://images.vexels.com/media/users/3/150942/isolated/lists/2e6fc7d9e16c8f59691704a2745e41c3-decorative-circle-ornament.png');
+  background-image: url("https://images.vexels.com/media/users/3/150942/isolated/lists/2e6fc7d9e16c8f59691704a2745e41c3-decorative-circle-ornament.png");
   background-size: 100% 100%;
   border: 5px solid #fcac00;
   box-shadow: 0px 0px 15px #fcac00;
@@ -2178,7 +2177,7 @@ padding: 15px 5px;
 
 .item-inv {
   width: calc(47%);
-  background-image: url('https://cdn.discordapp.com/attachments/1077978423147897003/1078832492070572052/card_brown.png');
+  background-image: url("https://cdn.discordapp.com/attachments/1077978423147897003/1078832492070572052/card_brown.png");
   margin: 1%;
   height: 30vh;
   display: flex;
@@ -2213,26 +2212,25 @@ padding: 15px 5px;
   transform: rotateY(180deg);
 }
 
-.money img{
-width: 50px;
-
+.money img {
+  width: 50px;
 }
-.money{
+.money {
   width: 100%;
   text-align: center;
   transform: translateY(-100px);
 }
 
-.Shop{
+.Shop {
   width: 100%;
 }
-.Shop img{
+.Shop img {
   width: 70%;
   height: 60%;
-  border: 2px solid #B17C2A;
+  border: 2px solid #b17c2a;
   border-radius: 5px;
 }
-.Shop ul{
+.Shop ul {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -2241,9 +2239,9 @@ width: 50px;
   flex-wrap: wrap;
   border-radius: 2px;
 }
-.Shop li{
+.Shop li {
   margin: 0;
-  color: #B17C2A;
+  color: #b17c2a;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -2251,7 +2249,7 @@ width: 50px;
   width: 100%;
   height: 520px;
   padding: 10px;
-  background-image: url('https://cdn.discordapp.com/attachments/1077978423147897003/1078820399594348604/card.png');
+  background-image: url("https://cdn.discordapp.com/attachments/1077978423147897003/1078820399594348604/card.png");
   background-repeat: no-repeat;
   background-size: 100%;
   padding-bottom: 20px;
@@ -2259,62 +2257,61 @@ width: 50px;
   border-radius: 2px;
   margin: 5px;
 }
-.Shop h2{
+.Shop h2 {
   font-weight: bold;
   margin-bottom: 0;
 }
-.Shop h5{
+.Shop h5 {
   font-weight: lighter;
   margin-top: 0;
 }
-.Shop button{
-  background-color: #2A262E;
-  color: #B17C2A;
+.Shop button {
+  background-color: #2a262e;
+  color: #b17c2a;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.699);
-  border: 2px solid #B17C2A;
+  border: 2px solid #b17c2a;
 }
 
-.Armor{
+.Armor {
   width: 40px;
   height: 40px;
   background-color: #140501;
   border: 2px solid #eed895;
   opacity: 0.7;
   position: absolute;
-  background-image: url('https://cdn.discordapp.com/attachments/1077978423147897003/1081417135072497785/sword.png');
+  background-image: url("https://cdn.discordapp.com/attachments/1077978423147897003/1081417135072497785/sword.png");
   background-size: 100% 100%;
   z-index: 100;
   left: 20px;
   border-radius: 5px;
   padding: 5px;
 }
-.Weapons{
+.Weapons {
   width: 40px;
   height: 40px;
   background-color: #140501;
   border: 2px solid #eed895;
   opacity: 0.7;
   position: absolute;
-  background-image: url('https://cdn.discordapp.com/attachments/1077978423147897003/1081417134858571776/armor.png');
+  background-image: url("https://cdn.discordapp.com/attachments/1077978423147897003/1081417134858571776/armor.png");
   background-size: 100% 100%;
   z-index: 100;
   left: 20px;
   border-radius: 5px;
   padding: 5px;
 }
-.Armor{
+.Armor {
   top: 110px;
 }
-.Weapons{
+.Weapons {
   top: 180px;
 }
-.XPMax{
+.XPMax {
   width: 100%;
   background-color: #eed895;
   border-radius: 5px;
-
 }
-.XPAtual{
+.XPAtual {
   width: 60%;
   margin-left: 20%;
   margin-right: 20%;
@@ -2322,7 +2319,7 @@ width: 50px;
   border-radius: 5px;
   position: absolute;
 }
-.Health{
+.Health {
   width: 60%;
   margin-left: 20%;
   margin-right: 20%;
@@ -2331,50 +2328,54 @@ width: 50px;
   position: absolute;
 }
 
-.Game{
-  background-image: url('https://i.pinimg.com/originals/ff/43/87/ff4387421306f1a4c0dbf6ab6a83488b.jpg');
+.Game {
+  background-image: url("https://i.pinimg.com/originals/ff/43/87/ff4387421306f1a4c0dbf6ab6a83488b.jpg");
   background-size: 130% 100%;
   background-position: center;
   width: 100%;
   color: white;
   height: 100vh;
   text-shadow: 0px 0px 10px black;
-text-align: center;
+  text-align: center;
 }
-.MonsterCard{
+.MonsterCard {
   width: 60%;
   background-size: 30%;
-  border: 2px solid black;
   top: 0;
-  margin-left: 50%;
-  background-color: #140501;
+  right: 0;
+  display: flex;
+  flex-direction: row;
+  height: 100px;
+  align-items: center;
+  background-color: #582727;
+  clip-path: polygon(7% 0, 100% 0, 100% 100%, 0% 100%);
   padding: 10px;
-  border-radius: 15px;
-  animation: flip-in-hor-bottom 1.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  overflow: scroll;
+  position: absolute;
+  animation: flip-in-hor-bottom 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 @keyframes flip-in-hor-bottom {
   0% {
-    transform: rotateX(80deg) translate(-50%);
+    transform: rotateX(80deg);
     opacity: 0;
   }
   100% {
-    transform: rotateX(0) translate(-50%);
+    transform: rotateX(0);
     opacity: 1;
   }
 }
 
-.PlayerCard{
-  width: calc(100% - 20px);
-  background-image: url('https://i.pinimg.com/originals/16/1e/52/161e527774c365a8713d8dd66e52e648.jpg');
-  background-size: 30%;
-  background-color: #140501;
-  border-top: 15px solid black;
-  border-top-right-radius:15px;
-  border-top-left-radius:15px;
-  padding: 10px;
-  animation: scale-in-ver-bottom 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-
+.PlayerCard {
+  width: calc(100%);
+  border-top-right-radius: 15px;
+  border-top-left-radius: 15px;
+  animation: scale-in-ver-bottom 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  display: flex;
+  position: absolute;
+  bottom: 0;
 }
 @keyframes scale-in-ver-bottom {
   0% {
@@ -2388,38 +2389,37 @@ text-align: center;
     opacity: 1;
   }
 }
-.MonsterCard img{
+.MonsterCard img {
   width: 100%;
 }
-.Attack{
+.Attack {
   position: absolute;
-  top: 0;
-  text-align: center;
+  bottom: 120px;
+  right: 0;
+  text-align: end;
   width: 100%;
+  z-index: 100;
 }
-.gameint{
+.gameint {
   margin-top: 70px;
 }
-.Weacome{
+.Weacome {
   color: #eed895;
   text-shadow: 0px 0px 10px rgb(172, 11, 11);
 }
-.Attack button{
-  width: 80%;
+.Attack button {
+  width: 50%;
   padding-bottom: 15px;
   border: none;
   border-radius: 0;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
   font-size: larger;
-  background-color: #013243;
-  border-bottom: 10px solid black;
-  border-bottom-left-radius: 15px;
-  border-bottom-right-radius: 15px;
-  animation: scale-in-ver-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  background-color: #272624;
+  animation: scale-in-ver-top 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
-.Attack button:active{
-
+.Attack button:active {
   border-bottom: 0px solid black;
-
 }
 @keyframes scale-in-ver-top {
   0% {
@@ -2432,4 +2432,65 @@ text-align: center;
     transform-origin: 100% 0%;
     opacity: 1;
   }
+}
+.PlayerCard img {
+  width: 200px;
+  left: 30px;
+  position: absolute;
+  border-radius: 5px;
+  bottom: 20px;
+}
+.MonsterCard-img {
+  width: 200px;
+  height: 200px;
+  left: 20px;
+  position: absolute;
+  border-radius: 5px;
+  top:60px;
+}
+.PlayerCard div {
+  width: 70%;
+  overflow: scroll;
+}
+.PlayerCard-info {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  height: 100px;
+  align-items: center;
+  background-color: #272624;
+  clip-path: polygon(7% 0, 100% 0, 100% 100%, 0% 100%);
+  flex-wrap: wrap;
+}
+.PlayerCard-info p{
+  width: 100%;
+  text-align: center;
+  margin: 0;
+  padding: 5px;
+  margin-right: 0 !important;
+}
+.PlayerCard-info a{
+  width: 50%;
+  margin: 0;
+  padding: 5px;
+  margin-right: 0 !important;
+}
+.MonsterCard p{
+  width: 100%;
+  text-align: center;
+  margin: 0;
+  padding: 5px;
+  margin-right: 0 !important;
+}
+.MonsterCard a{
+  padding: 5px;
+  margin-right: 0 !important;
+}
+.turn{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50% , -50%);
+  color: #272624;
+  text-shadow: 0px 0px 20px rgb(172, 11, 11);
 }

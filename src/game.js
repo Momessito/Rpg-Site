@@ -29,6 +29,27 @@ function Game() {
   const [winner, setWinner] = useState(null);
 
   const [statusData, setStatusData] = useState(null);
+  const [userData, setUserData] = useState(null);
+
+  useEffect(() => {
+    async function getProfile() {
+      try {
+        const url = "https://saintdev.link/profile";
+        const token = localStorage.getItem("token");
+        const response = await axios.get(url, {
+          headers: {
+            "x-access-token": token,
+          },
+        });
+        console.log(response.data);
+        setUserData(response.data);
+      } catch (err) {
+        console.log(err);
+      }
+    }
+
+    getProfile();
+  }, []);
 
   async function getStatusProfile() {
     try {
@@ -58,16 +79,18 @@ function Game() {
   }
 
   function startGame() {
+    if(statusData.hp <= 0){
+      alert('Voce Está derrotado')
+    }else{
     // criar uma cópia do objeto statusData
     const updatedStatusData = {...statusData};
     // definir a vida do jogador para o valor original
-    updatedStatusData.hp = 100;
     // atualizar o estado statusData com a cópia atualizada
     setStatusData(updatedStatusData);
   
     setGameStarted(true);
     setTurn(1); // Começar a rodada 1
-    chooseRandomMonster();
+    chooseRandomMonster();}
   }
 
   function endGame() {
@@ -116,6 +139,7 @@ function Game() {
   }
   
 
+
   function handleAttack() {
     // Ataque do jogador ao monstro
     const damageToMonster = player.str + 10;
@@ -133,21 +157,37 @@ function Game() {
   
     // Ataque do monstro ao jogador
     const damageToPlayer = currentMonster.damage;
-    const newPlayerHealth = statusData.hp - damageToPlayer;
-    setStatusData({
-      ...statusData,
-      hp: newPlayerHealth
+    console.log(damageToPlayer)
+    const url = 'https://saintdev.link/profile/status/hp';
+    const token = localStorage.getItem('token');
+  
+    axios.post(url, { hp: -parseInt(damageToPlayer) }, {
+        headers: {
+          "x-access-token": token,
+        },
+      
+    })
+    .then(response => {
+      const newPlayerHealth = statusData.hp - damageToPlayer;
+      setStatusData({
+        ...statusData,
+        hp: newPlayerHealth
+      });
+  
+      // Verificar se o jogador ainda tem vida
+      if (newPlayerHealth <= 0) {
+        setWinner('monster'); // Monstro ganhou a batalha
+        return;
+      }
+  
+      // Próxima rodada
+      setTurn(turn + 1);
+    })
+    .catch(error => {
+      console.error(error);
     });
-  
-    // Verificar se o jogador ainda tem vida
-    if (newPlayerHealth <= 0) {
-      setWinner('monster'); // Monstro ganhou a batalha
-      return;
-    }
-  
-    // Próxima rodada
-    setTurn(turn + 1);
   }
+  
   
   
 
@@ -159,7 +199,7 @@ function Game() {
   <div>
   <h1 className='Weacome'>Bem-vindo ao Coliseu</h1>
   <p>Bem vindos desafiantes, onde vocês irao enfrentar seus inimigos, e batalhar pela gloria eterna</p>
-  <button onClick={startGame}>Começar Jogo</button>
+  <button onClick={startGame}>Batalhar</button>
   </div>
   )}  {gameStarted && (
     <div className='gameint'>
@@ -167,42 +207,63 @@ function Game() {
 
 
       <div>
-        <h3>Monstro</h3>
         {currentMonster && (
-          <div className='MonsterCard'>
-            <p>{currentMonster.name}</p>
-            <img src={currentMonster.image} alt={currentMonster.name} />
-            <p>Vida: {currentMonster.health}</p>
-            <p>Dano: {currentMonster.damage}</p>
-            <p >Xp: <span className='monsterxp'>{currentMonster.xp / 10}</span></p>
-          </div>
-        )}
-      </div>
-      <h2 style={{textAlign : 'center'}}>Round {turn}</h2>
-      <div className='PlayerCard'>
-        <h3>Jogador</h3>
-        {statusData && (
           <div>
-            <p>{statusData.name}</p>
-            <p>Vida: {statusData.hp}</p>
-            <p>Força: {statusData.str + 10}</p>
+                      <img className='MonsterCard-img' src={currentMonster.image} alt={currentMonster.name} />
+          <div className='MonsterCard'>
+
+
+            <p>{currentMonster.name}</p>
+            <a>HP: {currentMonster.health}</a>
+            <a>Atk: {currentMonster.damage}</a>
+            <a >Xp: <span className='monsterxp'>{currentMonster.xp / 10}</span></a>
+          </div>
           </div>
         )}
       </div>
+      
       {winner && (
         <div className='Attack'>
           <h3 className='Winner'>{winner === 'player' ? 'Você ganhou!' : 'Você perdeu!'}</h3>
           <button onClick={endGame}>Jogar Novamente</button>
         </div>
       )}
-
       {!winner && (
         <div className='Attack'>
           <button onClick={handleAttack}>Atacar</button>
         </div>
       )}
+      <h2 className='turn' style={{textAlign : 'center'}}>Round {turn}</h2>
+
+
+
+<div className='PlayerCard'>
+{userData ? (
+<div>
+<img src={userData.img} alt="Avatar do usuário" />
+</div>
+) : (
+<p>Carregando perfil...</p>
+)}
+  <div className='PlayerCard-info'>
+  
+  {statusData && (
+    <div>
+            {userData ? (
+<p>{userData.name}</p>
+) : (
+<a>Nome</a>
+)}
+      <a>HP: {statusData.hp}</a>
+      <a>Atk: {statusData.str + 10}</a>
+      <a>Lv: {statusData.lv}</a>
     </div>
   )}
+  </div>
+</div>
+    </div>
+  )}
+      
 </div>
 );
 }
