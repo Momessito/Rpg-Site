@@ -2357,23 +2357,6 @@ hr {
   font-size: large !important;
 }
 
-.item-inv:hover {
-  transform: rotateY(180deg);
-}
-
-.item-inv:hover img {
-  display: none;
-}
-
-.item-inv:hover .item-text {
-  display: none;
-}
-
-.item-inv:hover .item-desc {
-  display: block;
-  transform: rotateY(180deg);
-}
-
 .money img {
   width: 50px;
 }
@@ -2394,7 +2377,11 @@ hr {
   border: 2px solid #b17c2a;
   border-radius: 5px;
 }
-
+.item-inv button{
+  border: none;
+  font-weight: lighter;
+  color: white;
+}
 .Shop ul {
   list-style: none;
   margin: 0;
