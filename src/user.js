@@ -247,19 +247,19 @@ function User() {
       </h2>
       {StatusData && (
         <div>
-          <h2>Level: <span>{StatusData.lv}</span></h2>
-      <h2>
+          <h2>Level:<span>{StatusData.lv}</span></h2>
+      <h3>
       XP: <span>
         <div className="XPAtual">{StatusData.xp} / {StatusData.lv}00</div>
         </span>
 
-    </h2>
-      <h2 style={{marginTop : '30px'}}>
+    </h3>
+      <h3 style={{marginTop : '30px'}}>
       Hp: <span>
         <div className="Health">{StatusData.hp}</div>
         </span>
 
-    </h2>
+    </h3>
     </div>
       )}
       <div className="ProfileRank"></div>

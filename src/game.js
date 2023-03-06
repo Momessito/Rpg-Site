@@ -2,27 +2,49 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { point } from 'leaflet';
 import attack from './attack.mp3'
+import bite from './bite.mp3'
 import ost from './ost.mp3'
 import Nav from './components/nav';
 import SideMenu from './components/sidemenu';
+import orn from "./ornam.png";
+
 
 function Game() {
   const [monsters, setMonsters] = useState([
     {
       name: 'Zumbi',
-      description: 'Um monstro morto-vivo que se levanta da sepultura para atacar os vivos.',
-      image: 'https://www.royalmodel.eu/569-large_default/zombie-zombies-serie-135.jpg',
+      image: 'https://i.pinimg.com/originals/3f/47/b2/3f47b2ec6d443be46c502b3202970890.jpg',
+      damage: 10,
+      health: 50,
+      xp: 80,
+    },
+    {
+      name: 'Lobo Branco',
+      image: 'https://i.pinimg.com/originals/94/b8/50/94b850e5704e43c8691531640a7b3b44.jpg',
       damage: 10,
       health: 50,
       xp: 25,
     },
     {
-      name: 'Vampiro',
-      description: 'Uma criatura mística que se alimenta de sangue humano.',
+      name: 'Lobo Branco',
+      image: 'https://i.pinimg.com/originals/94/b8/50/94b850e5704e43c8691531640a7b3b44.jpg',
+      damage: 3,
+      health: 35,
+      xp: 25,
+    },
+    {
+      name: 'Yeti semi-adulto',
+      image: 'https://static.wikia.nocookie.net/fantasia/images/b/b8/295550_123482757835140_621085016_n.jpg/revision/latest?cb=20220831171111&path-prefix=pt',
+      damage: 35,
+      health: 205,
+      xp: 250,
+    },
+    {
+      name: 'Servo Vampiro Deformado',
       image: 'https://i.pinimg.com/originals/5a/e4/88/5ae488d2ae5fd0b31dcb29ed7c1d088a.jpg',
       damage: 20,
       health: 100,
-      xp: 50,
+      xp: 110,
     }
   ]);
 
@@ -87,6 +109,8 @@ function Game() {
       alert('Voce Está derrotado')
     }else{
     // criar uma cópia do objeto statusData
+    document.querySelector('.nav').style.display = 'none';
+    document.getElementById('root').style.overflow = 'hidden';
     const updatedStatusData = {...statusData};
     // definir a vida do jogador para o valor original
     // atualizar o estado statusData com a cópia atualizada
@@ -102,7 +126,7 @@ function Game() {
     const url = 'https://saintdev.link/tct';
     const token = localStorage.getItem('token');
     let points = 0;
-  
+    
     const monsterXP = parseInt(document.querySelector('.monsterxp').innerHTML) * 10;
     const winner = document.querySelector('.Winner').innerHTML
     console.log(winner)
@@ -129,6 +153,7 @@ function Game() {
       )
       .then((response) => {
         console.log('Solicitação enviada com sucesso!');
+        document.querySelector('.nav').style.display = 'block';
       })
       .catch((error) => {
         console.log('Ocorreu um erro ao enviar a solicitação:');
@@ -146,7 +171,8 @@ function Game() {
 
   function handleAttack() {
     // Ataque do jogador ao monstro
-    new Audio(attack).play();
+
+
     const damageToMonster = player.str + 10;
     const newMonsterHealth = currentMonster.health - damageToMonster;
     setCurrentMonster({
@@ -157,9 +183,42 @@ function Game() {
     // Verificar se o monstro ainda tem vida
     if (newMonsterHealth <= 0) {
       setWinner('player'); // Jogador ganhou a batalha
+
       return;
     }
-  
+    document.querySelector('.Attack').style.display = 'none';
+
+    setTimeout(() => {
+      new Audio(attack).play();
+      document.querySelector('.slashE').style.animation = 'slash 0.5s linear';
+      document.querySelector('.Attack').style.opacity = '0';
+
+      
+      setTimeout(() => {
+        document.querySelector('.DamageEnemy').style.animation = 'Damage-indicatorP 0.8s linear';
+        document.querySelector('.DamageHP').style.animation = 'Damage 0.5s linear';
+      }, 200);
+    }, 500);
+
+
+    setTimeout(() => {
+      new Audio(bite).play();
+      document.querySelector('.slashP').style.animation = 'slash 0.5s linear';
+
+      setTimeout(() => {
+        document.querySelector('.DamagePlayer').style.animation = 'Damage-indicatorP 0.8s linear';
+        document.querySelector('.PDamageHP').style.animation = 'Damage 0.5s linear';
+        document.querySelector('.Attack').style.display = 'flex';
+      }, 200);
+
+    }, 1500);
+
+    setTimeout(() => {
+
+    document.querySelector('.Attack').style.opacity = '1';
+
+    }, 2000);
+
     // Ataque do monstro ao jogador
     const damageToPlayer = currentMonster.damage;
     console.log(damageToPlayer)
@@ -178,7 +237,14 @@ function Game() {
         ...statusData,
         hp: newPlayerHealth
       });
-  
+      document.querySelector('.DamageHP').style.animation = 'a 0.5s linear';
+      document.querySelector('.PDamageHP').style.animation = 'a 0.5s linear';
+      document.querySelector('.DamagePlayer').style.animation = 'a 0.2s linear';
+      document.querySelector('.DamageEnemy').style.animation = 'a 0.2s linear';
+      document.querySelector('.slashE').style.animation = 'a 0.2s linear';
+      document.querySelector('.slashP').style.animation = 'a 0.2s linear';
+      document.querySelector('.Attack').style.animation = 'a 0.2s linear';
+
       // Verificar se o jogador ainda tem vida
       if (newPlayerHealth <= 0) {
         setWinner('monster'); // Monstro ganhou a batalha
@@ -206,8 +272,9 @@ function Game() {
   {!gameStarted && (
   <div>
   <h1 className='Weacome'>Bem-vindo ao Coliseu</h1>
-  <p>Bem vindos desafiantes, onde vocês irao enfrentar seus inimigos, e batalhar pela gloria eterna</p>
-  <button onClick={startGame}>Batalhar</button>
+  <p className='text-weacome'>Bem vindos desafiantes, onde vocês irao enfrentar seus inimigos, e batalhar pela gloria eterna</p>
+  <button className='startButton'>Batalhar</button>
+  
   </div>
   )}  {gameStarted && (
     <div className='gameint'>
@@ -217,37 +284,45 @@ function Game() {
       <div>
         {currentMonster && (
           <div>
-                      <img className='MonsterCard-img' src={currentMonster.image} alt={currentMonster.name} />
+            <div className='MonsterCard-img'>
+                      <img  src={currentMonster.image} alt={currentMonster.name} />
+                      <img src={orn} className="ornColi" />
+                      </div>
           <div className='MonsterCard'>
 
 
             <p>{currentMonster.name}</p>
-            <a>HP: {currentMonster.health}</a>
+            <a className='DamageHP'>HP: {currentMonster.health}</a>
+            <div className='DamageEnemy'>-{currentMonster.damage}</div>
             <a>Atk: {currentMonster.damage}</a>
             <a >Xp: <span className='monsterxp'>{currentMonster.xp / 10}</span></a>
           </div>
           </div>
         )}
       </div>
-      
+      <img src='https://ugokawaii.com/wp-content/uploads/2022/08/flash-effect-300x300.gif' className="slashE" />
+      <img src='https://i.pinimg.com/originals/78/7b/54/787b5434734f1539f93f0fc24e67e07a.gif' className="slashP" />
+
       {winner && (
-        <div className='Attack'>
+        <div className='Attack2'>
           <h3 className='Winner'>{winner === 'player' ? 'Você ganhou!' : 'Você perdeu!'}</h3>
           <button onClick={endGame}>Jogar Novamente</button>
         </div>
       )}
       {!winner && (
         <div className='Attack'>
-          <button onClick={handleAttack}>Atacar</button>
+          <button onClick={handleAttack}><img src='https://images.emojiterra.com/google/android-nougat/512px/2694.png'/>Atacar</button>
         </div>
       )}
       <h2 className='turn' style={{textAlign : 'center'}}>Rodada {turn}</h2>
 
 
 
+        
 <div className='PlayerCard'>
 {userData ? (
-<div>
+<div className='PlayerCard-img'>
+<img src={orn} className="ornColi" />
 <img src={userData.img} alt="Avatar do usuário" />
 </div>
 ) : (
@@ -262,8 +337,9 @@ function Game() {
 ) : (
 <a>Nome</a>
 )}
-      <a>HP: {statusData.hp}</a>
-      <a>Atk: {statusData.str + 10}</a>
+      <a className='PDamageHP'>HP: {statusData.hp}</a>
+      <div className='DamagePlayer'>-{statusData.damage}</div>
+      <a>Atk: {statusData.damage}</a>
       <a>Lv: {statusData.lv}</a>
     </div>
   )}
