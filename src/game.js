@@ -11,45 +11,91 @@ import orn from "./ornam.png";
 function Game() {
   const [monsters, setMonsters] = useState([
     {
-      name: "Zumbi",
-      image:
-        "https://i.pinimg.com/originals/3f/47/b2/3f47b2ec6d443be46c502b3202970890.jpg",
-      damage: 10,
-      health: 50,
-      xp: 80,
-    },
-    {
       name: "Lobo Branco",
       image:
         "https://i.pinimg.com/originals/94/b8/50/94b850e5704e43c8691531640a7b3b44.jpg",
       damage: 10,
-      health: 50,
-      xp: 25,
-    },
-    {
-      name: "Lobo Branco",
-      image:
-        "https://i.pinimg.com/originals/94/b8/50/94b850e5704e43c8691531640a7b3b44.jpg",
-      damage: 3,
-      health: 35,
-      xp: 25,
-    },
-    {
-      name: "Yeti semi-adulto",
-      image:
-        "https://static.wikia.nocookie.net/fantasia/images/b/b8/295550_123482757835140_621085016_n.jpg/revision/latest?cb=20220831171111&path-prefix=pt",
-      damage: 35,
-      health: 205,
-      xp: 250,
+      health: 100,
+      xp: 100,
     },
     {
       name: "Servo Vampiro Deformado",
       image:
         "https://i.pinimg.com/originals/5a/e4/88/5ae488d2ae5fd0b31dcb29ed7c1d088a.jpg",
-      damage: 20,
-      health: 100,
-      xp: 110,
+      damage: 15,
+      health: 150,
+      xp: 150,
     },
+    {
+      name: "Goblin",
+      image:
+        "https://cdn.discordapp.com/attachments/1077945959490797699/1082331199197945927/98b374acc4849c695b9e1bf27f8f8a9b.jpg",
+      damage: 15,
+      health: 150,
+      xp: 150,
+    },
+    {
+      name: "Esqueleto",
+      image:
+        "https://cdn.discordapp.com/attachments/1077945959490797699/1082331198963077170/dfbf6712ddee64251c115830a98d00b3.jpg",
+      damage: 20,
+      health: 200,
+      xp: 200,
+    },
+    {
+      name: "Aranha Gigante",
+      image:
+        "https://cdn.discordapp.com/attachments/1077945959490797699/1082331198690431007/af7ac291347ad8a3fc95bd397c5cd968.jpg",
+      damage: 25,
+      health: 250,
+      xp: 250,
+    },
+    {
+      name: "Lobo Solitario",
+      image:
+        "https://i.pinimg.com/originals/5a/e4/88/5ae488d2ae5fd0b31dcb29ed7c1d088a.jpg",
+      damage: 35,
+      health: 350,
+      xp: 350,
+    },    
+    {
+      name: "Troll",
+      image:
+        "https://cdn.discordapp.com/attachments/1077945959490797699/1082331198405222574/a6f422a9f4bcce3b1916a18378a56c84.jpg",
+      damage: 40,
+      health: 400,
+      xp: 400,
+    },
+    {
+      name: "Ghoul",
+      image:
+        "https://cdn.discordapp.com/attachments/1077945959490797699/1082331198124216410/7185fa06cac15b8fd7b82498367ff778.jpg",
+      damage: 45,
+      health: 450,
+      xp: 450,
+    },    {
+      name: "Minotauro",
+      image:
+        "https://cdn.discordapp.com/attachments/1077945959490797699/1082331197851574342/5a30b0969b5cb49ded0f962bbba7c244.jpg",
+      damage: 50,
+      health: 500,
+      xp: 500,
+    },    {
+      name: "Draconato",
+      image:
+        "https://cdn.discordapp.com/attachments/1077945959490797699/1082331197591539732/2682863c5f2bd0d4fb0d3d51e0cdee43.jpg",
+      damage: 55,
+      health: 550,
+      xp: 550,
+    },
+    {
+      name: "Dragão Jovem",
+      image:
+        "https://cdn.discordapp.com/attachments/1077945959490797699/1082331197302116443/3998eb81ecb5d25e512dbbdac5a1f16f.jpg",
+      damage: 100,
+      health: 1000,
+      xp: 1000,
+    }
   ]);
 
   const [gameStarted, setGameStarted] = useState(false);
