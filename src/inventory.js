@@ -23,8 +23,13 @@ function Inv() {
         console.log(err);
       }
     }
+    
+    useEffect(() => {
+      // Atualiza o título do documento usando a API do browser
+      getProfile();
+    }, []);
+    
 
-    getProfile();
   
   const handleEquip = async (itemId) => {
     try {
