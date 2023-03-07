@@ -118,7 +118,6 @@ class Tct extends Component {
             <img className='bg' src='https://cdn.discordapp.com/attachments/1077441049024282756/1077702004127834132/Momessito_Training_camp_RPGFantasy_inside_the_castlecastle_trai_7208cfc2-e635-4715-bd4e-9cceac346f1c.png'/>       
             <img className='bg' src='https://www.icegif.com/wp-content/uploads/2023/02/icegif-1172.gif'/>       
         <Nav></Nav>
-        <Login></Login>
         <SideMenu></SideMenu>
         <iframe src={mySound} allow="autoplay" id="iframeAudio">
       </iframe>

@@ -240,7 +240,7 @@ function User() {
         Raça: <span>{userData.race}</span>
       </h2>
       <h2>
-        Money: <span>{userData.money}</span>
+        Gold: <span>{userData.money}</span>
       </h2>
       <h2>
         Idade: <span>{userData.age}</span>

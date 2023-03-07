@@ -73,9 +73,7 @@ function Home() {
 
   return (
     <div className="App">
-      <div className="OnlyCell">
-        Atenção! Essa Aplicação so funciona para celulares.
-      </div>
+
 
       <SideMenu></SideMenu>
 

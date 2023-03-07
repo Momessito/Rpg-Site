@@ -21,6 +21,7 @@ class Friends extends Component {
     axios
       .get("https://saintdev.link/tavern")
       .then((response) => {
+        console.log(response)
         this.setState({ tavernData: response.data });
       })
       .catch((error) => {

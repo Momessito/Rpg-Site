@@ -19,20 +19,24 @@ function Shop() {
       });
   }, []);
 
-  async function buyItem(itemId,itemName) {
-    try {
-      const url = `https://saintdev.link/store/${itemId}/buy`;
-      const token = localStorage.getItem("token");
-      const response = await axios.post(url, {}, {
-        headers: {
-          "x-access-token": token,
-        },
-      });
-      alert(`Compra realizada com sucesso para o item ${itemName}!`);
-    } catch (err) {
-      alert(`Ocorreu um erro ao comprar o item ${itemName}: ${err.message}`);
+  async function buyItem(itemId,itemName,itemPrice) {
+    const confirmPurchase = window.confirm(`Deseja comprar o item ${itemName} por ${itemPrice} G?`);
+    if (confirmPurchase) {
+      try {
+        const url = `https://saintdev.link/store/${itemId}/buy`;
+        const token = localStorage.getItem("token");
+        const response = await axios.post(url, {}, {
+          headers: {
+            "x-access-token": token,
+          },
+        });
+        alert(`Compra realizada com sucesso para o item ${itemName}!`);
+      } catch (err) {
+        alert(`Ocorreu um erro ao comprar o item ${itemName}: ${err.message}`);
+      }
     }
   }
+  
   return (
     // rotas
     <div className="">
@@ -55,7 +59,7 @@ function Shop() {
               <img src={item.img}/>
               <h2>{item.name}</h2>
               <h5>{item.price} G</h5>
-              <button onClick={() => buyItem(item.id,item.name)}>Comprar</button>
+              <button onClick={() => buyItem(item.id,item.name,item.price)}>Comprar</button>
             </li>
           ))}
         </ul>

@@ -516,8 +516,22 @@ nav {
   height: 100vh;
   width: 100%;
   z-index: -10;
+  animation: circus 15s infinite;
 }
+@keyframes circus {
+  0% {
+    transform: rotate(0deg) scale(2);
+  }
 
+  50% {
+    transform: rotate(360deg) scale(10);
+
+  }
+
+  100% {
+    transform: rotate(0deg) scale(2);
+  }
+}
 .Sea {
   background-color: #030302;
   height: 100vh;
@@ -1873,17 +1887,19 @@ hr {
   width: 100%;
   height: 100vh;
 }
+@keyframes target {
+  0% {
+    box-shadow: 0px 0px 15px #fcac00;
+  }
+  50%{
+    box-shadow: 0px 0px 25px #fcac00;
 
-.target {
-  position: absolute;
-  width: 50px;
-  height: 50px;
-  background-color: rgb(62, 48, 197);
-  border-radius: 50%;
-  cursor: pointer;
-  transition: transform 0.2s ease-in-out;
+  }
+  100% {
+    box-shadow: 0px 0px 15px #fcac00;
+
+  }
 }
-
 .target:hover {
   transform: scale(1.2);
 }
@@ -2095,10 +2111,11 @@ hr {
 .Skills div {
   font-size: xx-large;
   font-weight: bold;
+  flex-direction: row;
   text-shadow: 0px 0px 10px black;
   z-index: 100;
+  flex-wrap: wrap;
   display: flex;
-  flex-direction: column;
   margin: 15px;
   padding: 5px;
   background: radial-gradient(#7e6c38 3px, transparent 4px),
@@ -2121,22 +2138,24 @@ hr {
     #070711;
   background-size: 109px 109px, 109px 109px, 100% 6px, 109px 109px, 109px 109px;
   background-position: 54px 55px, 0px 0px, 0px 0px, 0px 0px, 0px 0px;
-  border: 1px solid white;
+  border: 1px solid transparent;
   align-items: center;
   justify-content: center;
 }
 
 .Skills div h1 {
+  margin-right: 1rem;
   font-size: 2rem;
-  color: black;
-  text-shadow: 0px 0px 5px white;
+  color: rgb(255, 255, 255);
+  text-shadow: 0px 0px 5px none;
 }
 
 .Skills div p {
   margin-left: 10px;
+  margin: 0;
   font-size: 2rem;
   color: white;
-  text-shadow: 0px 0px 5px #fcac00;
+  text-shadow: 0px 0px 15px white;
 }
 
 .SkillTree a {
@@ -2152,8 +2171,11 @@ hr {
 
 .Skills div button {
   bottom: 50px;
+  width: 100%;
   background-color: black;
-  border: 2px solid black;
+  border: 2px solid rgba(255, 255, 255, 0.39);
+  color: rgba(255, 255, 255, 0.452);
+  box-shadow: none;
   text-shadow: 0px 0px 5px rgb(0, 0, 0);
   padding: 15px 5px;
 }
@@ -2197,9 +2219,9 @@ hr {
   background-color: rgb(172, 11, 11);
   background-image: url("https://images.vexels.com/media/users/3/150942/isolated/lists/2e6fc7d9e16c8f59691704a2745e41c3-decorative-circle-ornament.png");
   background-size: 100% 100%;
-  border: 5px solid #fcac00;
-  box-shadow: 0px 0px 15px #fcac00;
+  border: 2px solid #fcac00;
   z-index: 1000000;
+  animation: target 1s infinite;
   cursor: pointer;
 }
 

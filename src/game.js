@@ -3,10 +3,13 @@ import axios from "axios";
 import { point } from "leaflet";
 import attack from "./attack.mp3";
 import bite from "./bite.mp3";
+import win from "./win.mp3";
 import ost from "./ost.mp3";
+import death from "./death.mp3";
 import Nav from "./components/nav";
 import SideMenu from "./components/sidemenu";
 import orn from "./ornam.png";
+import { Alert } from "bootstrap";
 
 function Game() {
   const [monsters, setMonsters] = useState([
@@ -173,11 +176,14 @@ function Game() {
   }
 
   function endGame() {
+
+
+
     // Define as informações necessárias para a solicitação em axios
     const url = "https://saintdev.link/tct";
     const token = localStorage.getItem("token");
     let points = 0;
-
+    
     const monsterXP =
       parseInt(document.querySelector(".monsterxp").innerHTML) * 10;
     const winner = document.querySelector(".Winner").innerHTML;
@@ -221,38 +227,37 @@ function Game() {
 
   function handleAttack() {
     // Ataque do jogador ao monstro
-
+  
     const damageToMonster = player.damage;
     const newMonsterHealth = currentMonster.health - damageToMonster;
+  
+    // Calcula a chance de desvio do monstro baseado em sua sorte
+    const monsterDodgeChance = Math.floor(Math.random() * 10) + 1;
+    if (monsterDodgeChance === 1) {
+      alert('Monstro desviou do ataque!');
+      return;
+    }
+    
     setCurrentMonster({
       ...currentMonster,
       health: newMonsterHealth,
     });
-
+  
     // Verificar se o monstro ainda tem vida
     if (newMonsterHealth <= 0) {
+      setTimeout(() => {
+        new Audio(win).play();
+      }, 2000);
       setWinner("player"); // Jogador ganhou a batalha
-
       return;
     }
+  
     document.querySelector(".Attack").style.display = "none";
-
-    setTimeout(() => {
-      new Audio(attack).play();
-      document.querySelector(".slashE").style.animation = "slash 0.5s linear";
-      document.querySelector(".Attack").style.opacity = "0";
-
-      setTimeout(() => {
-        document.querySelector(".DamageEnemy").style.animation =
-          "Damage-indicatorP 0.8s linear";
-        document.querySelector(".DamageHP").style.animation =
-          "Damage 0.5s linear";
-      }, 200);
-    }, 500);
-
+  
     setTimeout(() => {
       new Audio(bite).play();
       document.querySelector(".slashP").style.animation = "slash 0.5s linear";
+      document.querySelector(".Attack").style.opacity = "0";
 
       setTimeout(() => {
         document.querySelector(".DamagePlayer").style.animation =
@@ -260,19 +265,40 @@ function Game() {
         document.querySelector(".PDamageHP").style.animation =
           "Damage 0.5s linear";
         document.querySelector(".Attack").style.display = "flex";
+      
+      }, 200);
+    }, 500);
+  
+    setTimeout(() => {
+      new Audio(attack).play();
+      document.querySelector(".slashE").style.animation = "slash 0.5s linear";
+  
+      setTimeout(() => {
+        document.querySelector(".DamageEnemy").style.animation =
+          "Damage-indicatorP 0.8s linear";
+        document.querySelector(".DamageHP").style.animation =
+          "Damage 0.5s linear";
       }, 200);
     }, 1500);
-
+  
     setTimeout(() => {
       document.querySelector(".Attack").style.opacity = "1";
     }, 2000);
-
+  
     // Ataque do monstro ao jogador
     const damageToPlayer = currentMonster.damage;
-    console.log(damageToPlayer);
+
+    // Calcula a chance de desvio do jogador baseado em sua sorte
+    const playerDodgeChance = Math.floor(Math.random() * 100) + 1;
+    if (playerDodgeChance <= player.dex) {
+      Alert('Você desviou do ataque!');
+      setTurn(turn + 1);
+      return;
+    }
+  
     const url = "https://saintdev.link/profile/status/hp";
     const token = localStorage.getItem("token");
-
+  
     axios
       .post(
         url,
@@ -285,10 +311,10 @@ function Game() {
       )
       .then((response) => {
         const newPlayerHealth = statusData.hp - damageToPlayer;
-        setStatusData({
-          ...statusData,
-          hp: newPlayerHealth,
-        });
+setStatusData({
+  ...statusData,
+  hp: newPlayerHealth,
+});
         document.querySelector(".DamageHP").style.animation = "a 0.5s linear";
         document.querySelector(".PDamageHP").style.animation = "a 0.5s linear";
         document.querySelector(".DamagePlayer").style.animation =
@@ -300,11 +326,14 @@ function Game() {
         document.querySelector(".Attack").style.animation = "a 0.2s linear";
 
         // Verificar se o jogador ainda tem vida
-        if (newPlayerHealth <= 0) {
-          setWinner("monster"); // Monstro ganhou a batalha
-          return;
-        }
+if (newPlayerHealth <= 0) {
+  setTimeout(() => {
+    new Audio(death).play();
+  }, 2000);
 
+  setWinner("monster"); // Monstro ganhou a batalha
+  return;
+}
         // Próxima rodada
         setTurn(turn + 1);
       })
@@ -312,7 +341,10 @@ function Game() {
         console.error(error);
       });
   }
+  
 
+        
+        
   function handleFlee() {}
 
   return (
@@ -327,7 +359,7 @@ function Game() {
             Bem vindos desafiantes, onde vocês irao enfrentar seus inimigos, e
             batalhar pela gloria eterna
           </p>
-          <button className="startButton">Batalhar</button>
+          <button className="startButton" onClick={()=>{alert('Voce é fraco volte quando ficar mais forte!')}}>Batalhar</button>
         </div>
       )}{" "}
       {gameStarted && (
@@ -376,6 +408,7 @@ function Game() {
                 Atacar
               </button>
             </div>
+            
           )}
           <h2 className="turn" style={{ textAlign: "center" }}>
             Rodada {turn}

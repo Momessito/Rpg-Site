@@ -7,6 +7,9 @@ import reportWebVitals from './reportWebVitals';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+          <div className="OnlyCell">
+        Atenção! Essa Aplicação so funciona para celulares.
+      </div>
     <App />
   </React.StrictMode>
 );
