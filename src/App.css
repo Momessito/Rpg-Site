@@ -2451,41 +2451,52 @@ hr {
 }
 
 .Armor {
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   background-color: #140501;
   border: 2px solid #eed895;
-  opacity: 0.7;
   position: absolute;
   background-image: url("https://cdn.discordapp.com/attachments/1077978423147897003/1081417135072497785/sword.png");
   background-size: 100% 100%;
   z-index: 100;
-  left: 20px;
+  right: 20px;
   border-radius: 5px;
-  padding: 5px;
 }
 
 .Weapons {
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   background-color: #140501;
   border: 2px solid #eed895;
-  opacity: 0.7;
   position: absolute;
   background-image: url("https://cdn.discordapp.com/attachments/1077978423147897003/1081417134858571776/armor.png");
   background-size: 100% 100%;
   z-index: 100;
-  left: 20px;
+  right: 20px;
   border-radius: 5px;
-  padding: 5px;
+}
+.Shield {
+  width: 50px;
+  height: 50px;
+  background-color: #140501;
+  border: 2px solid #eed895;
+  position: absolute;
+  background-image: url("https://cdn.discordapp.com/attachments/1077978423147897003/1082691798251610234/47877.png");
+  background-size: 100% 100%;
+  z-index: 100;
+  right: 20px;
+  border-radius: 5px;
 }
 
 .Armor {
-  top: 110px;
+  top: 20px;
 }
 
 .Weapons {
-  top: 180px;
+  top: 80px;
+}
+.Shield {
+  top: 140px;
 }
 
 .XPMax {
@@ -2508,6 +2519,14 @@ hr {
   margin-left: 20%;
   margin-right: 20%;
   background-color: #ce5353;
+  border-radius: 5px;
+  position: absolute;
+}
+.Mana {
+  width: 60%;
+  margin-left: 20%;
+  margin-right: 20%;
+  background-color: #5355ce;
   border-radius: 5px;
   position: absolute;
 }

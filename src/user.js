@@ -33,6 +33,9 @@ function User() {
   }, []);
 
   const [StatusData, setStatusData] = useState(null);
+  const [StatusWea, setStatusWea] = useState(null);
+  const [StatusArm, setStatusArm] = useState(null);
+  const [StatusShi, setStatusShi] = useState(null);
 
   async function getStatusProfile() {
     try {
@@ -45,6 +48,25 @@ function User() {
       });
       console.log(response.data);
       setStatusData(response.data);
+      getStatusWeapon(response.data.weapon);
+      getStatusArm(response.data.armor);
+      getStatusShi(response.data.shield);
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  async function getStatusWeapon(item) {
+    try {
+      const url = `https://saintdev.link/inventory/${item}`;
+      const token = localStorage.getItem("token");
+      const response = await axios.get(url, {
+        headers: {
+          "x-access-token": token,
+        },
+      });
+      console.log(response.data.data);
+      setStatusWea(response.data.data);
     } catch (err) {
       console.log(err);
     }
@@ -52,6 +74,42 @@ function User() {
 
   useEffect(() => {
     getStatusProfile();
+
+  }, []);
+  async function getStatusArm(item) {
+    try {
+      const url = `https://saintdev.link/inventory/${item}`;
+      const token = localStorage.getItem("token");
+      const response = await axios.get(url, {
+        headers: {
+          "x-access-token": token,
+        },
+      });
+      console.log(response.data.data);
+      setStatusArm(response.data.data);
+    } catch (err) {
+      console.log(err);
+    }
+  }
+  async function getStatusShi(item) {
+    try {
+      const url = `https://saintdev.link/inventory/${item}`;
+      const token = localStorage.getItem("token");
+      const response = await axios.get(url, {
+        headers: {
+          "x-access-token": token,
+        },
+      });
+      console.log(response.data.data);
+      setStatusShi(response.data.data);
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  useEffect(() => {
+    getStatusProfile();
+
   }, []);
 
   async function adicionarStatusProfile(token, nomeDoAtributo, status) {
@@ -76,14 +134,30 @@ function User() {
     }
   }
 
+
   
   return (
     <div className="UserApp">
       <SideMenu />
-      <Login />
       <Nav />
-      <div className="Armor"></div>
-      <div className="Weapons"></div>
+      <div className="Armor">
+      {StatusWea ? (
+      <img style={{width : '100%', height : '100%'}} src={StatusWea.img}/>):(
+        <div></div>
+      )}
+      </div>
+      <div className="Weapons">
+      {StatusArm ? (
+      <img style={{width : '100%', height : '100%'}} src={StatusArm.img}/>):(
+        <div></div>
+      )}
+      </div>
+      <div className="Shield">
+      {StatusShi ? (
+      <img style={{width : '100%' , height : '100%'}} src={StatusShi.img}/>):(
+        <div></div>
+      )}
+      </div>
       <div
         className="SkillButton"
         onClick={() => {
@@ -256,7 +330,13 @@ function User() {
     </h3>
       <h3 style={{marginTop : '30px'}}>
       Hp: <span>
-        <div className="Health">{StatusData.hp}</div>
+        <div className="Health">{StatusData.hp} / {StatusData.max_hp}</div>
+        </span>
+        
+    </h3>
+      <h3 style={{marginTop : '30px'}}>
+      Mp: <span>
+        <div className="Mana">{StatusData.mp} / {StatusData.max_mp}</div>
         </span>
 
     </h3>
