@@ -1353,7 +1353,7 @@ select {
 }
 
 .Side li {
-  list-style: none;
+  list-style: disc;
   margin: 10px;
   font-size: xx-large;
   transition: 0.3s all linear;
@@ -1889,14 +1889,14 @@ hr {
 }
 @keyframes target {
   0% {
-    box-shadow: 0px 0px 15px #fcac00;
+    box-shadow: 0px 0px 15px #000000;
   }
   50%{
-    box-shadow: 0px 0px 25px #fcac00;
+    box-shadow: 0px 0px 25px #000000;
 
   }
   100% {
-    box-shadow: 0px 0px 15px #fcac00;
+    box-shadow: 0px 0px 15px #000000;
 
   }
 }
@@ -2216,10 +2216,10 @@ hr {
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background-color: rgb(172, 11, 11);
+  background-color: rgb(30, 172, 11);
   background-image: url("https://images.vexels.com/media/users/3/150942/isolated/lists/2e6fc7d9e16c8f59691704a2745e41c3-decorative-circle-ornament.png");
   background-size: 100% 100%;
-  border: 2px solid #fcac00;
+  border: 2px solid #000000;
   z-index: 1000000;
   animation: target 1s infinite;
   cursor: pointer;

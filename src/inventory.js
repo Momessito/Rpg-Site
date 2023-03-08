@@ -57,7 +57,7 @@ function Inv() {
       console.log(err);
     }
   };
-  
+
   const handleUnequip = async (itemId) => {
     try {
       const url = "https://saintdev.link/inventory/unequip";
@@ -85,6 +85,22 @@ function Inv() {
     }
   };
   
+const handleUse = async (itemId) => {
+  try {
+    const url = `https://saintdev.link/inventory/${itemId}/use/`;
+    console.log(url)
+    const token = localStorage.getItem("token");
+    await axios.post(url, null, {
+      headers: {
+        "x-access-token": token,
+      },
+    });
+    getProfile();
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 
   return (
     <div className="Inv">
@@ -105,7 +121,7 @@ function Inv() {
                 {item.equipped ? (
                   <button onClick={() => handleUnequip(item.id)} style={{backgroundColor : 'orange'}}>Desequipar</button>
                 ) : item.consumable ? (
-                  <button style={{backgroundColor : 'green'}}>Utilizar</button>
+                  <button style={{backgroundColor : 'green'}} onClick={() => handleUse(item.id)}>Utilizar</button>
                 ) : (
                   <button style={{backgroundColor : 'black'}} onClick={() => handleEquip(item.id) }>Equipar</button>
                 )}
