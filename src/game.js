@@ -438,10 +438,17 @@ function Game() {
                 Atacar
               </button>
             </div>
+
             <div className="Heal">
               <button onClick={() => {document.querySelector('.Inventory-Heal').style.transform = 'translateX(0px)'}}>
                 <img src="https://cdn-icons-png.flaticon.com/512/1029/1029134.png" />
                 Curar
+              </button>
+            </div>
+            <div className="Magic">
+              <button onClick={()=>{alert('Voce ainda nao possui magias para utilizar!')}}>
+                <img src="https://cdn-icons-png.flaticon.com/512/234/234464.png" />
+                Magia
               </button>
             </div>
             <div className="Inventory-Heal">

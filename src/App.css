@@ -2673,6 +2673,17 @@ hr {
   z-index: 100;
   transition: 0.2s all linear;
 }
+.Magic {
+  position: absolute;
+  bottom: 250px;
+  right: 0;
+  display: flex;
+  justify-content: flex-end;
+  text-align: end;
+  width: 100%;
+  z-index: 100;
+  transition: 0.2s all linear;
+}
 
 .Attack2 {
   position: absolute;
@@ -2761,6 +2772,21 @@ hr {
   box-shadow: none;
 	animation: scale-in-hor-right 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
+.Magic button {
+  width: 45%;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 0;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  font-size: larger;
+  background-color: #272624;
+  box-shadow: none;
+	animation: scale-in-hor-right 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
 @keyframes scale-in-hor-right {
   0% {
     transform: scaleX(0);
@@ -2779,6 +2805,9 @@ hr {
   width: 30px;
 }
 .Heal button img{
+  width: 30px;
+}
+.Magic button img{
   width: 30px;
 }
 .Attack2 button {
