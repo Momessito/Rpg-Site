@@ -52,14 +52,6 @@ function Game() {
       damage: 25,
       health: 250,
       xp: 250,
-    },
-    {
-      name: "Lobo Solitario",
-      image:
-        "https://i.pinimg.com/originals/5a/e4/88/5ae488d2ae5fd0b31dcb29ed7c1d088a.jpg",
-      damage: 35,
-      health: 350,
-      xp: 350,
     },    
     {
       name: "Troll",
