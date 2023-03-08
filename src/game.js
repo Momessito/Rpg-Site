@@ -98,7 +98,7 @@ function Game() {
   const [currentMonster, setCurrentMonster] = useState({});
   const [turn, setTurn] = useState(0);
   const [winner, setWinner] = useState(null);
-
+  const [items, setItems] = useState([]);
   const [statusData, setStatusData] = useState(null);
   const [userData, setUserData] = useState(null);
 
@@ -335,7 +335,44 @@ function Game() {
   }
   
 
-        
+  async function getProfile() {
+    try {
+      const url = "https://saintdev.link/inventory";
+      const token = localStorage.getItem("token")
+      const response = await axios.get(url, {
+        headers: {
+          "x-access-token": token,
+        },
+      });
+      console.log(response);
+      setItems(response.data);
+    } catch (err) {
+      console.log(err);
+    }
+  }
+  
+  useEffect(() => {
+    // Atualiza o título do documento usando a API do browser
+    getProfile();
+  }, []);
+  
+
+  const handleUse = async (itemId) => {
+    try {
+      const url = `https://saintdev.link/inventory/${itemId}/use/`;
+      console.log(url)
+      const token = localStorage.getItem("token");
+      await axios.post(url, null, {
+        headers: {
+          "x-access-token": token,
+        },
+      });
+      getProfile();
+      getStatusProfile();
+    } catch (err) {
+      console.log(err);
+    }
+  };
         
   function handleFlee() {}
 
@@ -394,13 +431,35 @@ function Game() {
             </div>
           )}
           {!winner && (
+            <div>
             <div className="Attack">
               <button onClick={handleAttack}>
                 <img src="https://images.emojiterra.com/google/android-nougat/512px/2694.png" />
                 Atacar
               </button>
             </div>
-            
+            <div className="Heal">
+              <button onClick={() => {document.querySelector('.Inventory-Heal').style.transform = 'translateX(0px)'}}>
+                <img src="https://cdn-icons-png.flaticon.com/512/1029/1029134.png" />
+                Curar
+              </button>
+            </div>
+            <div className="Inventory-Heal">
+  <h1 onClick={() => {document.querySelector('.Inventory-Heal').style.transform = 'translateX(500px)'}}>X</h1>
+  {items.map((item) => (
+    <div className={`item-inv ${item.consumable ? 'consumable' : 'item-nada'}`} key={item.id}>
+      <img src={item.img} />
+      <div className="item-text">
+        <p>{item.name}</p>
+        <button style={{backgroundColor : 'green'}} onClick={() => handleUse(item.id)}>Utilizar</button>
+      </div>
+      <p className="item-desc">
+        {item.description}
+      </p>
+    </div>
+  ))}
+</div>
+            </div>
           )}
           <h2 className="turn" style={{ textAlign: "center" }}>
             Rodada {turn}
