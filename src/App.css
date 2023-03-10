@@ -250,7 +250,7 @@ body {
 
 .DamageEnemy {
   bottom: -50px;
-  right: 70%;
+  left: 0;
   z-index: 10000;
 }
 

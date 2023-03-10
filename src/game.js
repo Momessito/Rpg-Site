@@ -14,83 +14,23 @@ import { Alert } from "bootstrap";
 function Game() {
   const [monsters, setMonsters] = useState([
     {
-      name: "Lobo Branco",
+      name: "Slime",
       image:
-        "https://i.pinimg.com/originals/94/b8/50/94b850e5704e43c8691531640a7b3b44.jpg",
-      damage: 10,
-      health: 100,
+        "https://i.pinimg.com/236x/99/9d/16/999d16e1fa7f20640e9e1c9d5a95518b.jpg",
+      damage: 7,
+      dex: 5,
+      health: 25,
       xp: 100,
     },
     {
-      name: "Servo Vampiro Deformado",
+      name: "Rato",
       image:
-        "https://i.pinimg.com/originals/5a/e4/88/5ae488d2ae5fd0b31dcb29ed7c1d088a.jpg",
-      damage: 15,
-      health: 150,
-      xp: 150,
+        "https://cdn.discordapp.com/attachments/1077978423147897003/1083896069462708285/df543a0e269a28e302260316f2aa7167.jpg",
+      damage: 10,
+      dex: 7,
+      health: 32,
+      xp: 140,
     },
-    {
-      name: "Goblin",
-      image:
-        "https://cdn.discordapp.com/attachments/1077945959490797699/1082331199197945927/98b374acc4849c695b9e1bf27f8f8a9b.jpg",
-      damage: 15,
-      health: 150,
-      xp: 150,
-    },
-    {
-      name: "Esqueleto",
-      image:
-        "https://cdn.discordapp.com/attachments/1077945959490797699/1082331198963077170/dfbf6712ddee64251c115830a98d00b3.jpg",
-      damage: 20,
-      health: 200,
-      xp: 200,
-    },
-    {
-      name: "Aranha Gigante",
-      image:
-        "https://cdn.discordapp.com/attachments/1077945959490797699/1082331198690431007/af7ac291347ad8a3fc95bd397c5cd968.jpg",
-      damage: 25,
-      health: 250,
-      xp: 250,
-    },    
-    {
-      name: "Troll",
-      image:
-        "https://cdn.discordapp.com/attachments/1077945959490797699/1082331198405222574/a6f422a9f4bcce3b1916a18378a56c84.jpg",
-      damage: 40,
-      health: 400,
-      xp: 400,
-    },
-    {
-      name: "Ghoul",
-      image:
-        "https://cdn.discordapp.com/attachments/1077945959490797699/1082331198124216410/7185fa06cac15b8fd7b82498367ff778.jpg",
-      damage: 45,
-      health: 450,
-      xp: 450,
-    },    {
-      name: "Minotauro",
-      image:
-        "https://cdn.discordapp.com/attachments/1077945959490797699/1082331197851574342/5a30b0969b5cb49ded0f962bbba7c244.jpg",
-      damage: 50,
-      health: 500,
-      xp: 500,
-    },    {
-      name: "Draconato",
-      image:
-        "https://cdn.discordapp.com/attachments/1077945959490797699/1082331197591539732/2682863c5f2bd0d4fb0d3d51e0cdee43.jpg",
-      damage: 55,
-      health: 550,
-      xp: 550,
-    },
-    {
-      name: "Dragão Jovem",
-      image:
-        "https://cdn.discordapp.com/attachments/1077945959490797699/1082331197302116443/3998eb81ecb5d25e512dbbdac5a1f16f.jpg",
-      damage: 100,
-      health: 1000,
-      xp: 1000,
-    }
   ]);
 
   const [gameStarted, setGameStarted] = useState(false);
@@ -168,14 +108,11 @@ function Game() {
   }
 
   function endGame() {
-
-
-
     // Define as informações necessárias para a solicitação em axios
     const url = "https://saintdev.link/tct";
     const token = localStorage.getItem("token");
     let points = 0;
-    
+
     const monsterXP =
       parseInt(document.querySelector(".monsterxp").innerHTML) * 10;
     const winner = document.querySelector(".Winner").innerHTML;
@@ -187,7 +124,7 @@ function Game() {
       points = monsterXP;
     } else {
       // Se perdeu, os pontos são iguais ao XP do monstro multiplicado por -1
-      points = -1 * monsterXP;
+      points = -1 * (monsterXP / 2);
     }
 
     // Faz a solicitação em axios usando o método POST
@@ -218,127 +155,242 @@ function Game() {
   }
 
   function handleAttack() {
-        // Ataque do monstro ao jogador
-        const damageToPlayer = currentMonster.damage;
+    if (player.dex < currentMonster.dex) {
+      // Ataque do monstro ao jogador
+      const damageToPlayer = currentMonster.damage;
 
-        // Calcula a chance de desvio do jogador baseado em sua sorte
-        const playerDodgeChance = Math.floor(Math.random() * 100) + 1;
-        if (playerDodgeChance <= player.dex/50) {
-          console.log('Você desviou do ataque!');
+      // Calcula a chance de desvio do jogador baseado em sua sorte
+      const playerDodgeChance = Math.floor(Math.random() * 100) + 1;
+      if (playerDodgeChance <= player.dex / 50) {
+        alert("Você desviou do ataque!");
+        setTurn(turn + 1);
+        return;
+      }
+
+      const url = "https://saintdev.link/profile/status/hp";
+      const token = localStorage.getItem("token");
+
+      axios
+        .post(
+          url,
+          { hp: -parseInt(damageToPlayer) },
+          {
+            headers: {
+              "x-access-token": token,
+            },
+          }
+        )
+        .then((response) => {
+          const newPlayerHealth = statusData.hp - damageToPlayer;
+          setStatusData({
+            ...statusData,
+            hp: newPlayerHealth,
+          });
+
+          document.querySelector(".Attack").style.display = "none";
+
+          setTimeout(() => {
+            new Audio(bite).play();
+            document.querySelector(".slashP").style.animation =
+              "slash 0.5s linear";
+            document.querySelector(".Attack").style.opacity = "0";
+
+            setTimeout(() => {
+              document.querySelector(".DamagePlayer").style.animation =
+                "Damage-indicatorP 0.8s linear";
+              document.querySelector(".PDamageHP").style.animation =
+                "Damage 0.5s linear";
+              document.querySelector(".Attack").style.display = "flex";
+            }, 200);
+          }, 500);
+
+          setTimeout(() => {
+            new Audio(attack).play();
+            document.querySelector(".slashE").style.animation =
+              "slash 0.5s linear";
+
+            setTimeout(() => {
+              document.querySelector(".DamageEnemy").style.animation =
+                "Damage-indicatorP 0.8s linear";
+              document.querySelector(".DamageHP").style.animation =
+                "Damage 0.5s linear";
+            }, 200);
+          }, 1500);
+
+          setTimeout(() => {
+            document.querySelector(".Attack").style.opacity = "1";
+          }, 2000);
+          // Verificar se o monstro ainda tem vida
+          if (newMonsterHealth <= 0) {
+            setTimeout(() => {
+              new Audio(win).play();
+            }, 2000);
+            setWinner("player"); // Jogador ganhou a batalha
+            return;
+          }
+          // Verificar se o jogador ainda tem vida
+          if (newPlayerHealth <= 0) {
+            setTimeout(() => {
+              new Audio(death).play();
+            }, 2000);
+
+            setTimeout(() => {
+              document.querySelector(".DamageHP").style.animation =
+                "a 0.5s linear";
+              document.querySelector(".PDamageHP").style.animation =
+                "a 0.5s linear";
+              document.querySelector(".DamagePlayer").style.animation =
+                "a 0.2s linear";
+              document.querySelector(".DamageEnemy").style.animation =
+                "a 0.2s linear";
+              document.querySelector(".slashE").style.animation =
+                "a 0.2s linear";
+              document.querySelector(".slashP").style.animation =
+                "a 0.2s linear";
+              document.querySelector(".Attack").style.animation =
+                "a 0.2s linear";
+            }, 2500);
+            setWinner("monster"); // Monstro ganhou a batalha
+            return;
+          }
+          // Próxima rodada
           setTurn(turn + 1);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+
+      // Ataque do jogador ao monstro
+
+      const damageToMonster = player.damage;
+      console.log(player.damage);
+      const newMonsterHealth = currentMonster.health - damageToMonster;
+
+      // Calcula a chance de desvio do monstro baseado em sua sorte
+      const monsterDodgeChance = Math.floor(Math.random() * 10) + 1;
+      if (monsterDodgeChance === 1) {
+        console.log("Monstro desviou do ataque!");
+        return;
+      }
+
+      setCurrentMonster({
+        ...currentMonster,
+        health: newMonsterHealth,
+      });
+    } else {
+      // Ataque do jogador ao monstro
+
+      const damageToMonster = player.damage;
+      console.log(player.damage);
+      const newMonsterHealth = currentMonster.health - damageToMonster;
+
+      // Calcula a chance de desvio do monstro baseado em sua sorte
+      const monsterDodgeChance = Math.floor(Math.random() * 10) + 1;
+      if (monsterDodgeChance === 1) {
+        console.log("Monstro desviou do ataque!");
+        return;
+      }
+
+      setCurrentMonster({
+        ...currentMonster,
+        health: newMonsterHealth,
+      });
+
+      // Verificar se o monstro ainda tem vida
+      if (newMonsterHealth <= 0) {
+        setTimeout(() => {
+          new Audio(win).play();
+        }, 2000);
+        setWinner("player"); // Jogador ganhou a batalha
+        return;
+      }
+      document.querySelector(".Attack").style.display = "none";
+
+      setTimeout(() => {
+        new Audio(bite).play();
+        document.querySelector(".slashP").style.animation = "slash 0.5s linear";
+        document.querySelector(".Attack").style.opacity = "0";
+
+        setTimeout(() => {
+          document.querySelector(".DamagePlayer").style.animation =
+            "Damage-indicatorP 0.8s linear";
+          document.querySelector(".PDamageHP").style.animation =
+            "Damage 0.5s linear";
+          document.querySelector(".Attack").style.display = "flex";
+        }, 200);
+      }, 1500);
+
+      setTimeout(() => {
+        new Audio(attack).play();
+        document.querySelector(".slashE").style.animation = "slash 0.5s linear";
+
+        setTimeout(() => {
+          document.querySelector(".DamageEnemy").style.animation =
+            "Damage-indicatorP 0.8s linear";
+          document.querySelector(".DamageHP").style.animation =
+            "Damage 0.5s linear";
+        }, 200);
+      }, 500);
+
+      setTimeout(() => {
+        document.querySelector(".Attack").style.opacity = "1";
+      }, 2000);
+    }
+
+    // Ataque do monstro ao jogador
+
+    const damageToPlayer = currentMonster.damage;
+
+    const url = "https://saintdev.link/profile/status/hp";
+    const token = localStorage.getItem("token");
+
+    axios
+      .post(
+        url,
+        { hp: -parseInt(damageToPlayer) },
+        {
+          headers: {
+            "x-access-token": token,
+          },
+        }
+      )
+      .then((response) => {
+        const newPlayerHealth = statusData.hp - damageToPlayer;
+        setStatusData({
+          ...statusData,
+          hp: newPlayerHealth,
+        });
+
+        document.querySelector(".DamageHP").style.animation = "a 0.5s linear";
+        document.querySelector(".PDamageHP").style.animation = "a 0.5s linear";
+        document.querySelector(".DamagePlayer").style.animation =
+          "a 0.2s linear";
+        document.querySelector(".DamageEnemy").style.animation =
+          "a 0.2s linear";
+        document.querySelector(".slashE").style.animation = "a 0.2s linear";
+        document.querySelector(".slashP").style.animation = "a 0.2s linear";
+        document.querySelector(".Attack").style.animation = "a 0.2s linear";
+
+        // Verificar se o jogador ainda tem vida
+        if (newPlayerHealth <= 0) {
+          setTimeout(() => {
+            new Audio(death).play();
+          }, 2000);
+
+          setWinner("monster"); // Monstro ganhou a batalha
           return;
         }
-      
-        const url = "https://saintdev.link/profile/status/hp";
-        const token = localStorage.getItem("token");
-      
-        axios
-          .post(
-            url,
-            { hp: -parseInt(damageToPlayer) },
-            {
-              headers: {
-                "x-access-token": token,
-              },
-            }
-          )
-          .then((response) => {
-            const newPlayerHealth = statusData.hp - damageToPlayer;
-    setStatusData({
-      ...statusData,
-      hp: newPlayerHealth,
-    });
-            document.querySelector(".DamageHP").style.animation = "a 0.5s linear";
-            document.querySelector(".PDamageHP").style.animation = "a 0.5s linear";
-            document.querySelector(".DamagePlayer").style.animation =
-              "a 0.2s linear";
-            document.querySelector(".DamageEnemy").style.animation =
-              "a 0.2s linear";
-            document.querySelector(".slashE").style.animation = "a 0.2s linear";
-            document.querySelector(".slashP").style.animation = "a 0.2s linear";
-            document.querySelector(".Attack").style.animation = "a 0.2s linear";
-    
-            // Verificar se o jogador ainda tem vida
-    if (newPlayerHealth <= 0) {
-      setTimeout(() => {
-        new Audio(death).play();
-      }, 2000);
-    
-      setWinner("monster"); // Monstro ganhou a batalha
-      return;
-    }
-            // Próxima rodada
-            setTurn(turn + 1);
-          })
-          .catch((error) => {
-            console.error(error);
-          });
-          
-    // Ataque do jogador ao monstro
-  
-    const damageToMonster = player.damage;
-    const newMonsterHealth = currentMonster.health - damageToMonster;
-  
-    // Calcula a chance de desvio do monstro baseado em sua sorte
-    const monsterDodgeChance = Math.floor(Math.random() * 10) + 1;
-    if (monsterDodgeChance === 1) {
-      console.log('Monstro desviou do ataque!');
-      return;
-    }
-    
-    setCurrentMonster({
-      ...currentMonster,
-      health: newMonsterHealth,
-    });
-  
-    // Verificar se o monstro ainda tem vida
-    if (newMonsterHealth <= 0) {
-      setTimeout(() => {
-        new Audio(win).play();
-      }, 2000);
-      setWinner("player"); // Jogador ganhou a batalha
-      return;
-    }
-  
-    document.querySelector(".Attack").style.display = "none";
-  
-    setTimeout(() => {
-      new Audio(bite).play();
-      document.querySelector(".slashP").style.animation = "slash 0.5s linear";
-      document.querySelector(".Attack").style.opacity = "0";
-
-      setTimeout(() => {
-        document.querySelector(".DamagePlayer").style.animation =
-          "Damage-indicatorP 0.8s linear";
-        document.querySelector(".PDamageHP").style.animation =
-          "Damage 0.5s linear";
-        document.querySelector(".Attack").style.display = "flex";
-      
-      }, 200);
-    }, 500);
-  
-    setTimeout(() => {
-      new Audio(attack).play();
-      document.querySelector(".slashE").style.animation = "slash 0.5s linear";
-  
-      setTimeout(() => {
-        document.querySelector(".DamageEnemy").style.animation =
-          "Damage-indicatorP 0.8s linear";
-        document.querySelector(".DamageHP").style.animation =
-          "Damage 0.5s linear";
-      }, 200);
-    }, 1500);
-  
-    setTimeout(() => {
-      document.querySelector(".Attack").style.opacity = "1";
-    }, 2000);
+        // Próxima rodada
+        setTurn(turn + 1);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   }
-  
-
   async function getProfile() {
     try {
       const url = "https://saintdev.link/inventory";
-      const token = localStorage.getItem("token")
+      const token = localStorage.getItem("token");
       const response = await axios.get(url, {
         headers: {
           "x-access-token": token,
@@ -350,17 +402,15 @@ function Game() {
       console.log(err);
     }
   }
-  
   useEffect(() => {
     // Atualiza o título do documento usando a API do browser
     getProfile();
   }, []);
-  
 
   const handleUse = async (itemId) => {
     try {
       const url = `https://saintdev.link/inventory/${itemId}/use/`;
-      console.log(url)
+      console.log(url);
       const token = localStorage.getItem("token");
       await axios.post(url, null, {
         headers: {
@@ -373,7 +423,7 @@ function Game() {
       console.log(err);
     }
   };
-        
+
   function handleFlee() {}
 
   return (
@@ -388,7 +438,9 @@ function Game() {
             Bem vindos desafiantes, onde vocês irao enfrentar seus inimigos, e
             batalhar pela gloria eterna
           </p>
-          <button className="startButton" onClick={startGame}>Batalhar</button>
+          <button className="startButton" onClick={startGame}>
+            Batalhar
+          </button>
         </div>
       )}{" "}
       {gameStarted && (
@@ -403,7 +455,9 @@ function Game() {
                 <div className="MonsterCard">
                   <p>{currentMonster.name}</p>
                   <a className="DamageHP">HP: {currentMonster.health}</a>
-                  <div className="DamageEnemy">-{currentMonster.damage}</div>
+                  {statusData && (
+                  <div className="DamageEnemy">-{statusData.damage}</div>
+                  )}
                   <a>Atk: {currentMonster.damage}</a>
                   <a>
                     Xp:{" "}
@@ -432,40 +486,64 @@ function Game() {
           )}
           {!winner && (
             <div>
-            <div className="Attack">
-              <button onClick={handleAttack}>
-                <img src="https://images.emojiterra.com/google/android-nougat/512px/2694.png" />
-                Atacar
-              </button>
-            </div>
+              <div className="Attack">
+                <button onClick={handleAttack}>
+                  <img src="https://images.emojiterra.com/google/android-nougat/512px/2694.png" />
+                  Atacar
+                </button>
+              </div>
 
-            <div className="Heal">
-              <button onClick={() => {document.querySelector('.Inventory-Heal').style.transform = 'translateX(0px)'}}>
-                <img src="https://cdn-icons-png.flaticon.com/512/1029/1029134.png" />
-                Curar
-              </button>
-            </div>
-            <div className="Magic">
-              <button onClick={()=>{alert('Voce ainda nao possui magias para utilizar!')}}>
-                <img src="https://cdn-icons-png.flaticon.com/512/234/234464.png" />
-                Magia
-              </button>
-            </div>
-            <div className="Inventory-Heal">
-  <h1 onClick={() => {document.querySelector('.Inventory-Heal').style.transform = 'translateX(500px)'}}>X</h1>
-  {items.map((item) => (
-    <div className={`item-inv ${item.consumable ? 'consumable' : 'item-nada'}`} key={item.id}>
-      <img src={item.img} />
-      <div className="item-text">
-        <p>{item.name}</p>
-        <button style={{backgroundColor : 'green'}} onClick={() => handleUse(item.id)}>Utilizar</button>
-      </div>
-      <p className="item-desc">
-        {item.description}
-      </p>
-    </div>
-  ))}
-</div>
+              <div className="Heal">
+                <button
+                  onClick={() => {
+                    document.querySelector(".Inventory-Heal").style.transform =
+                      "translateX(0px)";
+                  }}
+                >
+                  <img src="https://cdn-icons-png.flaticon.com/512/1029/1029134.png" />
+                  Curar
+                </button>
+              </div>
+              <div className="Magic">
+                <button
+                  onClick={() => {
+                    alert("Voce ainda nao possui magias para utilizar!");
+                  }}
+                >
+                  <img src="https://cdn-icons-png.flaticon.com/512/234/234464.png" />
+                  Magia
+                </button>
+              </div>
+              <div className="Inventory-Heal">
+                <h1
+                  onClick={() => {
+                    document.querySelector(".Inventory-Heal").style.transform =
+                      "translateX(500px)";
+                  }}
+                >
+                  X
+                </h1>
+                {items.map((item) => (
+                  <div
+                    className={`item-inv ${
+                      item.consumable ? "consumable" : "item-nada"
+                    }`}
+                    key={item.id}
+                  >
+                    <img src={item.img} />
+                    <div className="item-text">
+                      <p>{item.name}</p>
+                      <button
+                        style={{ backgroundColor: "green" }}
+                        onClick={() => handleUse(item.id)}
+                      >
+                        Utilizar
+                      </button>
+                    </div>
+                    <p className="item-desc">{item.description}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           )}
           <h2 className="turn" style={{ textAlign: "center" }}>
