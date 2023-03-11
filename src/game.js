@@ -20,7 +20,7 @@ function Game() {
       damage: 7,
       dex: 35,
       health: 25,
-      xp: 100,
+      xp: 50,
     },
     {
       name: "Rato",
@@ -29,7 +29,7 @@ function Game() {
       damage: 10,
       dex: 37,
       health: 32,
-      xp: 140,
+      xp: 70,
     },
   ]);
 
