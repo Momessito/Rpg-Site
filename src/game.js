@@ -18,7 +18,7 @@ function Game() {
       image:
         "https://i.pinimg.com/236x/99/9d/16/999d16e1fa7f20640e9e1c9d5a95518b.jpg",
       damage: 7,
-      dex: 5,
+      dex: 35,
       health: 25,
       xp: 100,
     },
@@ -27,7 +27,7 @@ function Game() {
       image:
         "https://cdn.discordapp.com/attachments/1077978423147897003/1083896069462708285/df543a0e269a28e302260316f2aa7167.jpg",
       damage: 10,
-      dex: 7,
+      dex: 37,
       health: 32,
       xp: 140,
     },
