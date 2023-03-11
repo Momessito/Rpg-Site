@@ -18,7 +18,7 @@ function Game() {
       image:
         "https://i.pinimg.com/236x/99/9d/16/999d16e1fa7f20640e9e1c9d5a95518b.jpg",
       damage: 7,
-      dex: 55,
+      dex: 5500,
       health: 25,
       xp: 50,
     },
@@ -27,7 +27,7 @@ function Game() {
       image:
         "https://cdn.discordapp.com/attachments/1077978423147897003/1083896069462708285/df543a0e269a28e302260316f2aa7167.jpg",
       damage: 10,
-      dex: 50,
+      dex: 5000,
       health: 32,
       xp: 70,
     },
@@ -277,116 +277,14 @@ function Game() {
         ...currentMonster,
         health: newMonsterHealth,
       });
-    } else {
-      // Ataque do jogador ao monstro
-
-      const damageToMonster = player.damage;
-      console.log(player.damage);
-      const newMonsterHealth = currentMonster.health - damageToMonster;
-
-      // Calcula a chance de desvio do monstro baseado em sua sorte
-      const monsterDodgeChance = Math.floor(Math.random() * 10) + 1;
-      if (monsterDodgeChance === 1) {
-        console.log("Monstro desviou do ataque!");
-        return;
-      }
-
-      setCurrentMonster({
-        ...currentMonster,
-        health: newMonsterHealth,
-      });
-
-      // Verificar se o monstro ainda tem vida
-      if (newMonsterHealth <= 0) {
-        setTimeout(() => {
-          new Audio(win).play();
-        }, 2000);
-        setWinner("player"); // Jogador ganhou a batalha
-        return;
-      }
-      document.querySelector(".Attack").style.display = "none";
-
-      setTimeout(() => {
-        new Audio(bite).play();
-        document.querySelector(".slashP").style.animation = "slash 0.5s linear";
-        document.querySelector(".Attack").style.opacity = "0";
-
-        setTimeout(() => {
-          document.querySelector(".DamagePlayer").style.animation =
-            "Damage-indicatorP 0.8s linear";
-          document.querySelector(".PDamageHP").style.animation =
-            "Damage 0.5s linear";
-          document.querySelector(".Attack").style.display = "flex";
-        }, 200);
-      }, 1500);
-
-      setTimeout(() => {
-        new Audio(attack).play();
-        document.querySelector(".slashE").style.animation = "slash 0.5s linear";
-
-        setTimeout(() => {
-          document.querySelector(".DamageEnemy").style.animation =
-            "Damage-indicatorP 0.8s linear";
-          document.querySelector(".DamageHP").style.animation =
-            "Damage 0.5s linear";
-        }, 200);
-      }, 500);
-
-      setTimeout(() => {
-        document.querySelector(".Attack").style.opacity = "1";
-      }, 2000);
     }
-
-    // Ataque do monstro ao jogador
-
-    const damageToPlayer = currentMonster.damage;
-
-    const url = "https://saintdev.link/profile/status/hp";
-    const token = localStorage.getItem("token");
-
-    axios
-      .post(
-        url,
-        { hp: -parseInt(damageToPlayer) },
-        {
-          headers: {
-            "x-access-token": token,
-          },
-        }
-      )
-      .then((response) => {
-        const newPlayerHealth = statusData.hp - damageToPlayer;
-        setStatusData({
-          ...statusData,
-          hp: newPlayerHealth,
-        });
-
-        document.querySelector(".DamageHP").style.animation = "a 0.5s linear";
-        document.querySelector(".PDamageHP").style.animation = "a 0.5s linear";
-        document.querySelector(".DamagePlayer").style.animation =
-          "a 0.2s linear";
-        document.querySelector(".DamageEnemy").style.animation =
-          "a 0.2s linear";
-        document.querySelector(".slashE").style.animation = "a 0.2s linear";
-        document.querySelector(".slashP").style.animation = "a 0.2s linear";
-        document.querySelector(".Attack").style.animation = "a 0.2s linear";
-
-        // Verificar se o jogador ainda tem vida
-        if (newPlayerHealth <= 0) {
-          setTimeout(() => {
-            new Audio(death).play();
-          }, 2000);
-
-          setWinner("monster"); // Monstro ganhou a batalha
-          return;
-        }
-        // Próxima rodada
-        setTurn(turn + 1);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
   }
+
+
+
+
+
+
   async function getProfile() {
     try {
       const url = "https://saintdev.link/inventory";
