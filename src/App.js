@@ -350,8 +350,12 @@ function Home() {
           a jogar. Junte-se a outros jogadores e embarque em uma aventura
           emocionante em um mundo mágico e cheio de desafios. Vamos jogar!
         </p>
+        <h1>Entrar nessa aventura</h1>
+        <iframe src="https://discord.com/widget?id=1077296800626647120&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+
       </div>
       <hr></hr>
+
       <Footer></Footer>
     </div>
   );
