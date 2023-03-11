@@ -1334,6 +1334,7 @@ select {
 
 .Side ul {
   margin: 0;
+  text-align: left;
   padding: 0;
 }
 
@@ -2573,11 +2574,12 @@ hr {
 }
 .Inventory-Heal{
   overflow: scroll;
+  display: none;
+  opacity: 0;
   width: 100%;
   position: absolute;
   height: 100vh;
   transition: 0.5s all linear;
-  display: flex;
   flex-wrap: wrap;
   transform: translateX(500px);
   top: 0;
@@ -2908,7 +2910,7 @@ hr {
   border-radius: 20px;
   text-align: center;
   margin: 0;
-  padding: 5px;
+  padding: 0px;
   transform: translateY(-10px);
   margin-right: 0 !important;
 }

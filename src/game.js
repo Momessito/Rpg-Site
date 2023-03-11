@@ -17,16 +17,16 @@ function Game() {
       name: "Slime",
       image:
         "https://i.pinimg.com/236x/99/9d/16/999d16e1fa7f20640e9e1c9d5a95518b.jpg",
-      damage: 7,
+      damage: 18,
       dex: 5500,
-      health: 25,
+      health: 30,
       xp: 50,
     },
     {
       name: "Rato",
       image:
         "https://cdn.discordapp.com/attachments/1077978423147897003/1083896069462708285/df543a0e269a28e302260316f2aa7167.jpg",
-      damage: 10,
+      damage: 22,
       dex: 5000,
       health: 32,
       xp: 70,
@@ -95,7 +95,7 @@ function Game() {
     } else {
       // criar uma cópia do objeto statusData
       document.querySelector(".nav").style.display = "none";
-      document.getElementById("root").style.overflow = "hidden";
+      document.querySelector(".Game").style.overflow = "hidden";
       const updatedStatusData = { ...statusData };
       // definir a vida do jogador para o valor original
       // atualizar o estado statusData com a cópia atualizada
@@ -155,7 +155,8 @@ function Game() {
   }
 
   function handleAttack() {
-    if (player.dex < currentMonster.dex) {
+    if (player.dex < 10000) {
+
       // Ataque do monstro ao jogador
       const damageToPlayer = currentMonster.damage;
 
@@ -187,44 +188,11 @@ function Game() {
             hp: newPlayerHealth,
           });
 
-          document.querySelector(".Attack").style.display = "none";
-
-          setTimeout(() => {
-            new Audio(bite).play();
-            document.querySelector(".slashP").style.animation =
-              "slash 0.5s linear";
-            document.querySelector(".Attack").style.opacity = "0";
-
-            setTimeout(() => {
-              document.querySelector(".DamagePlayer").style.animation =
-                "Damage-indicatorP 0.8s linear";
-              document.querySelector(".PDamageHP").style.animation =
-                "Damage 0.5s linear";
-              document.querySelector(".Attack").style.display = "flex";
-            }, 200);
-          }, 500);
-
-          setTimeout(() => {
-            new Audio(attack).play();
-            document.querySelector(".slashE").style.animation =
-              "slash 0.5s linear";
-
-            setTimeout(() => {
-              document.querySelector(".DamageEnemy").style.animation =
-                "Damage-indicatorP 0.8s linear";
-              document.querySelector(".DamageHP").style.animation =
-                "Damage 0.5s linear";
-            }, 200);
-          }, 1500);
-
-          setTimeout(() => {
-            document.querySelector(".Attack").style.opacity = "1";
-          }, 2000);
           // Verificar se o monstro ainda tem vida
           if (newMonsterHealth <= 0) {
             setTimeout(() => {
               new Audio(win).play();
-            }, 2000);
+            }, 1000);
             setWinner("player"); // Jogador ganhou a batalha
             return;
           }
@@ -232,7 +200,7 @@ function Game() {
           if (newPlayerHealth <= 0) {
             setTimeout(() => {
               new Audio(death).play();
-            }, 2000);
+            }, 1000);
 
             setTimeout(() => {
               document.querySelector(".DamageHP").style.animation =
@@ -263,13 +231,12 @@ function Game() {
       // Ataque do jogador ao monstro
 
       const damageToMonster = player.damage;
-      console.log(player.damage);
       const newMonsterHealth = currentMonster.health - damageToMonster;
 
       // Calcula a chance de desvio do monstro baseado em sua sorte
       const monsterDodgeChance = Math.floor(Math.random() * 10) + 1;
       if (monsterDodgeChance === 1) {
-        console.log("Monstro desviou do ataque!");
+        alert("Monstro desviou do ataque!");
         return;
       }
 
@@ -278,12 +245,39 @@ function Game() {
         health: newMonsterHealth,
       });
     }
+
+    document.querySelector(".attackB").style.display = "none";
+
+    setTimeout(() => {
+      new Audio(bite).play();
+      document.querySelector(".slashP").style.animation = "slash 0.5s linear";
+      document.querySelector(".attackB").style.opacity = "0";
+
+      setTimeout(() => {
+        document.querySelector(".DamagePlayer").style.animation =
+          "Damage-indicatorP 0.8s linear";
+        document.querySelector(".PDamageHP").style.animation =
+          "Damage 0.5s linear";
+        document.querySelector(".attackB").style.display = "flex";
+      }, 200);
+    }, 500);
+
+    setTimeout(() => {
+      new Audio(attack).play();
+      document.querySelector(".slashE").style.animation = "slash 0.5s linear";
+
+      setTimeout(() => {
+        document.querySelector(".DamageEnemy").style.animation =
+          "Damage-indicatorP 0.8s linear";
+        document.querySelector(".DamageHP").style.animation =
+          "Damage 0.5s linear";
+      }, 200);
+    }, 1500);
+
+    setTimeout(() => {
+      document.querySelector(".attackB").style.opacity = "1";
+    }, 2000);
   }
-
-
-
-
-
 
   async function getProfile() {
     try {
@@ -333,8 +327,22 @@ function Game() {
         <div>
           <h1 className="Weacome">Bem-vindo ao Coliseu</h1>
           <p className="text-weacome">
-            Bem vindos desafiantes, onde vocês irao enfrentar seus inimigos, e
-            batalhar pela gloria eterna
+            Bem-vindo ao Coliseu, o lugar onde lendas são forjadas e a glória é
+            conquistada! Localizado no coração da cidade, nosso lendário Coliseu
+            é o palco de alguns dos maiores combates que já foram vistos em todo
+            o mundo.
+            <br /> <br />
+            Com uma história rica e fascinante, o Coliseu é mais do que apenas
+            um lugar para lutas. É um símbolo da força e da coragem, onde os
+            guerreiros mais habilidosos e destemidos do mundo se reúnem para
+            enfrentar uns aos outros em batalhas épicas.
+            <br /> <br />
+            Com uma ampla variedade de desafios e torneios para escolher, há
+            sempre algo emocionante acontecendo no Coliseu. Você pode lutar
+            contra os melhores lutadores do mundo em uma batalha épica até a
+            morte, ou participar de um torneio para mostrar sua habilidade e
+            sagacidade estratégica.
+            <br /> <br />
           </p>
           <button className="startButton" onClick={startGame}>
             Batalhar
@@ -354,7 +362,7 @@ function Game() {
                   <p>{currentMonster.name}</p>
                   <a className="DamageHP">HP: {currentMonster.health}</a>
                   {statusData && (
-                  <div className="DamageEnemy">-{statusData.damage}</div>
+                    <div className="DamageEnemy">-{statusData.damage}</div>
                   )}
                   <a>Atk: {currentMonster.damage}</a>
                   <a>
@@ -385,7 +393,7 @@ function Game() {
           {!winner && (
             <div>
               <div className="Attack">
-                <button onClick={handleAttack}>
+                <button className="attackB" onClick={handleAttack}>
                   <img src="https://images.emojiterra.com/google/android-nougat/512px/2694.png" />
                   Atacar
                 </button>
@@ -396,6 +404,10 @@ function Game() {
                   onClick={() => {
                     document.querySelector(".Inventory-Heal").style.transform =
                       "translateX(0px)";
+                    document.querySelector(".Inventory-Heal").style.opacity =
+                      "1";
+                    document.querySelector(".Inventory-Heal").style.display =
+                      "flex";
                   }}
                 >
                   <img src="https://cdn-icons-png.flaticon.com/512/1029/1029134.png" />

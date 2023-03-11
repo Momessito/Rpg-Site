@@ -31,7 +31,7 @@ class Tct extends Component {
   startGame() {
     const url = "https://saintdev.link/tct";
     const token = localStorage.getItem("token");
-  
+    
     this.setState({
       score: 0,
       timeLeft: 30,
@@ -51,6 +51,7 @@ class Tct extends Component {
   
         if (!this.state.postSent) {
           // POST request to url
+          
           axios.post(url, { points: this.state.score }, { headers: { "x-access-token": token } })
             .then(response => {
               console.log(response);
