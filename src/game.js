@@ -333,7 +333,7 @@ function Game() {
             o mundo.
             <br /> <br />
             Com uma história rica e fascinante, o Coliseu é mais do que apenas
-            um lugar para lutas. É um símbolo da força e da coragem, onde os
+            um lugar para lutas. É um símbolo da <span onClick={() =>{alert('Parabens voce achou um easter egg diga a senha : "A força prevalece" para o adm Eldarion.')}}>força</span> e da coragem, onde os
             guerreiros mais habilidosos e destemidos do mundo se reúnem para
             enfrentar uns aos outros em batalhas épicas.
             <br /> <br />
