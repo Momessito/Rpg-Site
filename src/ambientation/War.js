@@ -27,7 +27,7 @@ function War() {
                 </div>
                 <div class="details">
                     <h4 class="color1">A guerra dos Sete reinos</h4>
-                    <h4 class="color2 margin">A matança dos dez anos</h4>
+                    <h4 class="color2 margin">A <span onClick={() =>{alert('Parabens voce achou um easter egg diga a senha : "A matança era a solução?" para o adm Eldarion.')}}>matança</span> dos dez anos</h4>
                     <p>Eu era apenas um jovem soldado quando a guerra começou. Era uma época de incerteza e medo, com cada reino lutando pelo poder. Os reis e rainhas da época estavam dispostos a fazer qualquer coisa para alcançar seus objetivos, incluindo derramar o sangue de seus próprios cidadãos.</p>
                 </div>
             </div>
@@ -50,7 +50,6 @@ function War() {
                 </div>
             </div>
             <div className="down"></div>
-
             <iframe src={Sound} allow="autoplay" id="iframeAudio">
             </iframe>
             <Footer></Footer>
