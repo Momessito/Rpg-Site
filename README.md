@@ -21,4 +21,3 @@ This application was created with Javascript using the React library, html and c
 - Preview em tempo real
 - Modo tela cheia
 - Multiplataforma
-
