@@ -1,8 +1,8 @@
 import Footer from './components/footer';
 import SideMenu from './components/sidemenu';
 import Nav from './components/nav';
-import mySound from './tabern.mp3'
-import guild from './adventure.png'
+import mySound from './musics/tabern.mp3'
+import guild from './images/adventure.png'
 
 function Monsters() {
 

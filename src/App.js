@@ -1,18 +1,18 @@
 import "./App.css";
-import Map from "./map.png";
-import War from "./war.png";
-import God from "./god.png";
-import dest from "./destr.png";
-import monster from "./monsters.png";
-import orn from "./ornam.png";
-import orn2 from "./ornam1.png";
-import mySound from "./music.mp3";
+import Map from "./images/map.png";
+import War from "./images/war.png";
+import God from "./images/god.png";
+import dest from "./images/destr.png";
+import monster from "./images/monsters.png";
+import orn from "./images/ornam.png";
+import orn2 from "./images/ornam1.png";
+import mySound from "./musics/music.mp3";
 import Footer from "./components/footer";
 import Carrosel from "./components/carrosel";
 import SideMenu from "./components/sidemenu";
-import sound from "./zoom.mp3";
+import sound from "./musics/zoom.mp3";
 import Nav from "./components/nav";
-import compass from "./compass.png";
+import compass from "./images/compass.png";
 import Login from "./components/Login";
 
 function Home() {

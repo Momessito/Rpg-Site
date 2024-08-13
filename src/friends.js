@@ -1,10 +1,8 @@
 import Footer from "./components/footer";
 import SideMenu from "./components/sidemenu";
 import Nav from "./components/nav";
-import mySound from "./tabern.mp3";
-import guild from "./adventure.png";
-import char from "./char2.png";
-import char2 from "./char3.png";
+import mySound from "./musics/tabern.mp3";
+import guild from "./images/adventure.png";
 import axios from "axios";
 import { Component, useState } from "react";
 import Login from "./components/Login";

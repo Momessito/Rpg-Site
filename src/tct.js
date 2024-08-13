@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Nav from './components/nav';
 import Login from './components/Login';
 import SideMenu from './components/sidemenu';
-import mySound from './tct.mp3';
+import mySound from './musics/tct.mp3';
 import axios from 'axios';
 
 class Tct extends Component {

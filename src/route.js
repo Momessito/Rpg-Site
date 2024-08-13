@@ -9,7 +9,7 @@ import Missions from './missions';
 import Roleta from './roleta';
 import Cards from './cards';
 import Quiz from './quiz';
-import DarkFlorest from './ambientation/darkflorest';
+import DarkFlorest from './ambientation/DarkFlorest/darkflorest';
 import War from './ambientation/War';
 import Tct from './tct';
 import Sea from './ambientation/Sea';

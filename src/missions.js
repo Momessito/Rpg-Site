@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Login from "./components/Login";
 import Nav from "./components/nav";
 import SideMenu from "./components/sidemenu";
-import mySound from './inventory.mp3'
+import mySound from './musics/inventory.mp3'
 
 const missions = [
   {

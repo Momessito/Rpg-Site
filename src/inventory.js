@@ -3,7 +3,7 @@ import axios from "axios";
 import SideMenu from "./components/sidemenu";
 import Nav from "./components/nav";
 import Login from "./components/Login";
-import mySound from './inventory.mp3'
+import mySound from './musics/inventory.mp3'
 
 function Inv() {
   const [items, setItems] = useState([]);

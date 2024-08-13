@@ -2,12 +2,11 @@ import { useState, useEffect } from "react";
 import Footer from "./components/footer";
 import SideMenu from "./components/sidemenu";
 import Nav from "./components/nav";
-import mySound from "./user.mp3";
-import guild from "./adventure.png";
-import char from "./char2.png";
+import mySound from "./musics/user.mp3";
+import guild from "./images/adventure.png";
 import axios from "axios";
 import Login from "./components/Login";
-import sound from "./zoom.mp3";
+import sound from "./musics/zoom.mp3";
 
 function User() {
   const [userData, setUserData] = useState(null);

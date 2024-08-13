@@ -1,5 +1,5 @@
-import orn from '../ornam2.png'
-import orn2 from '../ornam1.png'
+import orn from '../images/ornam2.png'
+import orn2 from '../images/ornam1.png'
 
 function SideMenu() {
     return (

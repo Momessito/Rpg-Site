@@ -1,8 +1,8 @@
-import Footer from '../components/footer';
-import Nav from '../components/nav';
-import Login from '../components/Login'
+import Footer from '../../components/footer';
+import Nav from '../../components/nav';
+import Login from '../../components/Login'
 import Sound from './dark.mp3'
-import SideMenu from '../components/sidemenu';
+import SideMenu from '../../components/sidemenu';
 
 function DarkFlorest() {
     setTimeout(() => {
@@ -15,25 +15,27 @@ function DarkFlorest() {
         <div className="dark" style={{ background: '#030202' }}>
             <SideMenu ></SideMenu>
             <div className='inputs'>            <Login></Login>
-            <Nav></Nav></div>
+                <Nav></Nav></div>
 
 
-            <div className="monsterPage" onClick={()=>{        document.querySelector('.monsterPage').style.opacity = '0'
-document.querySelector('.monsterPage').style.zIndex = '0'}}>
-            <div class="cardd">
-                <div class="card-image"><img src="https://cdn.discordapp.com/attachments/1077441049024282756/1077455281409232916/Momessito_quick_reflexmagic_cast_head__nohair_blue_casting__tel_1c1895af-5bc7-4e1b-b20b-66668ca2882f.png" /></div>
-                <div class="card-description">
-                    <p class="text-title">Você ganhou uma habilidade!</p>
-                    <p class="text-Star">Senha: O toque das trevas</p><br></br>
-                    <p class="text-body">fale essa senha para o ADM Momesso e se você for o primeiro a achar esse easter egg voce ira ganhar uma habilidade.</p>
+            <div className="monsterPage" onClick={() => {
+                document.querySelector('.monsterPage').style.opacity = '0'
+                document.querySelector('.monsterPage').style.zIndex = '0'
+            }}>
+                <div class="cardd">
+                    <div class="card-image"><img src="https://cdn.discordapp.com/attachments/1077441049024282756/1077455281409232916/Momessito_quick_reflexmagic_cast_head__nohair_blue_casting__tel_1c1895af-5bc7-4e1b-b20b-66668ca2882f.png" /></div>
+                    <div class="card-description">
+                        <p class="text-title">Você ganhou uma habilidade!</p>
+                        <p class="text-Star">Senha: O toque das trevas</p><br></br>
+                        <p class="text-body">fale essa senha para o ADM Momesso e se você for o primeiro a achar esse easter egg voce ira ganhar uma habilidade.</p>
+                    </div>
                 </div>
             </div>
-            </div>
 
 
-            <div className="imgOver"><img className='imgFlorest' src='https://cdn.discordapp.com/attachments/1077441049024282756/1077618428719931413/Momessito_shadow_florestdark_fantasy_RPG_night_dark_darkness_no_f83840e9-a368-4ebb-816a-58a4a3acde33.png' />
+            <div className="imgOver"><img className='imgFlorest' src='https://i.ibb.co/0m9p2Qd/florest.png' />
 
-                <img className='imgFlorestMonstr' src='https://cdn.discordapp.com/attachments/1077441049024282756/1077638342998511836/Momessito_shadow_florestdark_fantasy_RPG_night_dark_darkness_no_3ae5b83c-da6b-4f7f-8fb9-2b0fcbbf24c4.png' />
+                <img className='imgFlorestMonstr' src='https://i.ibb.co/D4k8xkk/Florest-Monster.png' />
 
             </div>
             <div className="fade"></div>
@@ -46,7 +48,7 @@ document.querySelector('.monsterPage').style.zIndex = '0'}}>
 
                     <h1>Mrs. Dalloway</h1>
                     <hr />
-                    <h2>by Virginia Woolf</h2>
+                    <h2>por Virginia Woolf</h2>
 
                     <h3>Carta de Expedição ao Vazio</h3>
 
@@ -68,8 +70,8 @@ document.querySelector('.monsterPage').style.zIndex = '0'}}>
 
                 </div>
             </div>
-            
-            <div className="monsterClick" onClick={()=>{document.querySelector('.monsterPage').style.opacity = '1';document.querySelector('.monsterPage').style.zIndex = '1000'}}></div>
+
+            <div className="monsterClick" onClick={() => { document.querySelector('.monsterPage').style.opacity = '1'; document.querySelector('.monsterPage').style.zIndex = '1000' }}></div>
 
             <iframe src={Sound} allow="autoplay" id="iframeAudio">
             </iframe>

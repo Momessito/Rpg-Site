@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { point } from "leaflet";
-import attack from "./attack.mp3";
-import bite from "./bite.mp3";
-import win from "./win.mp3";
-import ost from "./ost.mp3";
-import death from "./death.mp3";
+import attack from "./musics/attack.mp3";
+import bite from "./musics/bite.mp3";
+import win from "./musics/win.mp3";
+import ost from "./musics/ost.mp3";
+import death from "./musics/death.mp3";
 import Nav from "./components/nav";
 import SideMenu from "./components/sidemenu";
-import orn from "./ornam.png";
+import orn from "./images/ornam.png";
 import { Alert } from "bootstrap";
 
 function Game() {

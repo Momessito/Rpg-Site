@@ -2,7 +2,7 @@ import Footer from "./components/footer";
 import Nav from "./components/nav";
 import SideMenu from "./components/sidemenu";
 import React, { useState } from "react";
-import ticket from "./bilhete.png";
+import ticket from "./images/bilhete.png";
 import axios from "axios";
 
 const nomes = ["100 G", "98 G", "Nada", "Nada", "Nada", "Nada", "Nada", "50 G","20 G","25 G","10 G","5 G","100 G", "98 G", "Nada", "Nada", "Nada", "Nada", "Nada", "50 G","20 G","25 G","10 G","5 G","100 G", "98 G", "Nada", "Nada", "Nada", "Nada", "Nada", "50 G","20 G","25 G","10 G","5 G","100 G", "98 G", "Nada", "Nada", "Nada", "Nada", "Nada", "50 G","20 G","25 G","10 G","5 G","500 G","1000 G"];
