@@ -14,6 +14,7 @@ import sound from "./musics/zoom.mp3";
 import Nav from "./components/nav";
 import compass from "./images/compass.png";
 import Login from "./components/Login";
+import Discord from "./images/DIscord.jpeg"
 
 function Home() {
   var istrue = true;
@@ -315,7 +316,7 @@ function Home() {
           <img src={orn} className="orn" />
           <img
             className="imgHistory"
-            src="https://cdn.discordapp.com/attachments/946523460060975157/1077208999017062420/Momessito_people_gaming_RPG_in_your_computer_becoming_your_own__64dd5bfe-f39a-4a28-8b12-db767c5fa75f.png"
+            src={Discord}
           />
         </div>
         <p>

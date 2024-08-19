@@ -3,6 +3,8 @@ import Nav from '../../components/nav';
 import Login from '../../components/Login'
 import Sound from './dark.mp3'
 import SideMenu from '../../components/sidemenu';
+import Florest from '../../images/florest.PNG'
+import FlorestMonster from '../../images/Florest-Monster.PNG'
 
 function DarkFlorest() {
     setTimeout(() => {
@@ -33,9 +35,9 @@ function DarkFlorest() {
             </div>
 
 
-            <div className="imgOver"><img className='imgFlorest' src='https://i.ibb.co/0m9p2Qd/florest.png' />
+            <div className="imgOver"><img className='imgFlorest' src={Florest} />
 
-                <img className='imgFlorestMonstr' src='https://i.ibb.co/D4k8xkk/Florest-Monster.png' />
+                <img className='imgFlorestMonstr' src={FlorestMonster} />
 
             </div>
             <div className="fade"></div>

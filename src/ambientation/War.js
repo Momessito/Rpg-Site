@@ -3,6 +3,9 @@ import Nav from '../components/nav';
 import Login from '../components/Login'
 import Sound from './war.mp3'
 import SideMenu from '../components/sidemenu';
+import War1 from '../images/war1.jpeg'
+import War2 from '../images/War2.jpeg'
+import War3 from '../images/war.png'
 
 function War() {
 
@@ -13,7 +16,7 @@ function War() {
             <Login></Login>
             <Nav></Nav>
 
-            <img className='imgWar' src='https://cdn.discordapp.com/attachments/1077441049024282756/1077653538160791672/Momessito_fantasy_war_fire_magic_people_war__swords_crowd_3e12d534-e423-41a8-867d-ea9ca4c55858.png' />
+            <img className='imgWar' src={War3} />
 
             <div className="fade"></div>
             <div className="TitlesWar">
@@ -23,7 +26,7 @@ function War() {
             <div class="carde">
                 <div class="imgBox">
                     <div class="bark"></div>
-                    <img src="https://cdn.discordapp.com/attachments/1077441049024282756/1077659971736584262/Momessito_icon_war_fantasy__magic_castle_attack__crowd_0c580a41-ed1d-45a2-b4d0-f51f5ae8ed55.png" />
+                    <img src={War2} />
                 </div>
                 <div class="details">
                     <h4 class="color1">A guerra dos Sete reinos</h4>
@@ -34,7 +37,7 @@ function War() {
             <div class="carde2">
                 <div class="imgBox">
                     <div class="bark"></div>
-                    <img src="https://cdn.discordapp.com/attachments/1077441049024282756/1077660059661774968/Momessito_icon_war_fantasy__magic_castle_attack__crowd_6c97fc01-c166-40b7-b696-a10ebfba2708.png" />
+                    <img src={War1} />
                 </div>
                 <div class="details">
                     <p style={{ fontSize: '10px' }}>Lembro-me vividamente do primeiro ataque. O céu estava escuro e as nuvens pareciam pesadas com a chuva que estava por vir. Eu estava de guarda na fronteira do meu reino quando vi as primeiras tropas inimigas se aproximando. Eram muitos, e suas armas eram reluzentes sob a luz da lua.

@@ -2,6 +2,7 @@ import Footer from "./components/footer";
 import Nav from "./components/nav";
 import SideMenu from "./components/sidemenu";
 import axios from "axios";
+import Shop1 from './images/IMG_4106.PNG'
 import { useState,useEffect } from "react";
 
 function Shop() {
@@ -44,7 +45,7 @@ function Shop() {
       <Nav></Nav>
       <img
         style={{ width: "100%" }}
-        src="https://cdn.discordapp.com/ephemeral-attachments/946523460060975157/1077328424969969814/grid_0.webp"
+        src={Shop1}
       />
       
       <div className="FadeProfile"></div>

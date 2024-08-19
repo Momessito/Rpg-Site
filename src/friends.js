@@ -6,6 +6,7 @@ import guild from "./images/adventure.png";
 import axios from "axios";
 import { Component, useState } from "react";
 import Login from "./components/Login";
+import Tavern from "./images/IMG_4108.PNG"
 
 class Friends extends Component {
   constructor(props) {
@@ -38,7 +39,7 @@ class Friends extends Component {
         <iframe src={mySound} allow="autoplay loop" id="iframeAudio"></iframe>
         <img
           className="coofe"
-          src="https://cdn.discordapp.com/attachments/946523460060975157/1077250363759013888/Momessito_fantasyrpganime_scenery_city_center_1589d12e-2fe1-4c72-a09d-d962e66aad93.png"
+          src={Tavern}
         />
         <h1 style={{ marginTop: "0px", textAlign: "center" }}>Taberna</h1>
         <p style={{ margin: "10px" }}>

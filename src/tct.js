@@ -4,7 +4,7 @@ import Login from './components/Login';
 import SideMenu from './components/sidemenu';
 import mySound from './musics/tct.mp3';
 import axios from 'axios';
-
+import Castle from './images/20240814_232239857_iOS.png'
 class Tct extends Component {
   constructor(props) {
     super(props);
@@ -116,7 +116,7 @@ class Tct extends Component {
 
     return (
         <div className='tct'> 
-            <img className='bg' src='https://cdn.discordapp.com/attachments/1077441049024282756/1077702004127834132/Momessito_Training_camp_RPGFantasy_inside_the_castlecastle_trai_7208cfc2-e635-4715-bd4e-9cceac346f1c.png'/>       
+            <img className='bg' src={Castle}/>       
             <img className='bg' src='https://www.icegif.com/wp-content/uploads/2023/02/icegif-1172.gif'/>       
         <Nav></Nav>
         <SideMenu></SideMenu>
